@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân - CSS Grid & Flexbox</title>
+    <!-- Liên kết file CSS của Hoạt động 2 -->
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+
+    <!-- Khung bố cục tổng thể sử dụng CSS Grid -->
+    <div class="portfolio-layout">
+
+        <!-- 1. Header: Chiếm toàn bộ chiều ngang -->
+        <header class="header">
+            <div>
+                <h1>Nguyễn Văn A</h1>
+                <p>Frontend Developer / UI Designer</p>
+            </div>
+            <div class="header-status">
+                <span style="color: #059669; font-weight: 600;">● Đang nhận dự án</span>
+            </div>
+        </header>
+
+        <!-- 2. Sidebar: Cột bên trái rộng 250px -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">NA</div>
+                <h3>Thông Tin</h3>
+                <p style="color: #64748b; font-size: 13px;">Hà Nội, Việt Nam</p>
+            </div>
+            <ul class="nav-list">
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </aside>
+
+        <!-- 3. Main Content: Chiếm phần còn lại (1fr) -->
+        <main class="main-content">
+            
+            <!-- Thẻ Giới thiệu -->
+            <section id="about" class="card">
+                <h2>Giới Thiệu Bản Thân</h2>
+                <p>
+                    Chào bạn! Tôi là một lập trình viên Frontend đam mê xây dựng giao diện người dùng hiện đại, tối ưu trải nghiệm và tương thích trên đa nền tảng thiết bị với chuẩn CSS Grid và Flexbox.
+                </p>
+            </section>
+
+            <!-- Thẻ Kỹ Năng (Yêu cầu Prompt 2: Dùng Flexbox wrap và gap 15px) -->
+            <section id="skills" class="card">
+                <h2>Kỹ Năng Chuyên Môn</h2>
+                <div class="skills-list">
+                    <span class="skill-item">HTML5</span>
+                    <span class="skill-item">CSS3</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">Flexbox</span>
+                    <span class="skill-item">CSS Grid</span>
+                    <span class="skill-item">Responsive Design</span>
+                    <span class="skill-item">Git / GitHub</span>
+                    <span class="skill-item">UI/UX Design</span>
+                    <span class="skill-item">Figma</span>
+                </div>
+            </section>
+
+            <!-- Thẻ Dự Án -->
+            <section id="projects" class="card">
+                <h2>Dự Án Nổi Bật</h2>
+                <p>
+                    Hệ thống Portfolio cá nhân và Dashboard quản lý thiết kế chuẩn W3C, kiểm soát chặt chẽ Box Model và loại bỏ hoàn toàn các thuộc tính lỗi thời.
+                </p>
+            </section>
+
+        </main>
+
+        <!-- 4. Footer: Dưới cùng chiếm toàn bộ chiều ngang -->
+        <footer class="footer">
+            <p>&copy; 2026 Nguyễn Văn A - Thiết kế bằng CSS Grid & Flexbox chuẩn chỉnh.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

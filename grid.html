@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bố cục CSS Grid - Phong cách Cyan Hiện Đại</title>
+    <!-- 1. CSS dùng chung cho thẻ card, màu sắc và icon -->
+    <link rel="stylesheet" href="card.css">
+    <!-- 2. CSS riêng biệt cho bố cục Grid 3 cột -->
+    <link rel="stylesheet" href="grid.css">
+</head>
+<body>
+
+    <!-- Tiêu đề trang -->
+    <header class="header-section">
+        <span>Giao Diện Cyan Hiện Đại</span>
+        <h1>Bố Cục CSS Grid 3 Cột</h1>
+    </header>
+
+    <!-- Khung chứa lưới 3 cột (Grid Container) -->
+    <main class="grid-container">
+        
+        <!-- Cột 1 -->
+        <div class="grid-item">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </div>
+            <h3>Thiết Kế Web</h3>
+            <p>Bố cục chuẩn với 3 cột chia tỉ lệ 1fr đều nhau, tạo cảm giác thoáng đãng và cân bằng thị giác.</p>
+            <a href="index.html" class="btn-link">
+                &larr; Về trang Index
+            </a>
+        </div>
+
+        <!-- Cột 2 -->
+        <div class="grid-item">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                </svg>
+            </div>
+            <h3>Hiệu Ứng Mượt Mà</h3>
+            <p>Khoảng cách gap 20px kết hợp bo góc 10px và đổ bóng sắc cyan mang lại cảm giác công nghệ tươi sáng.</p>
+            <a href="index.html" class="btn-link">
+                &larr; Về trang Index
+            </a>
+        </div>
+
+        <!-- Cột 3 -->
+        <div class="grid-item">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+            </div>
+            <h3>Tối Ưu Hiển Thị</h3>
+            <p>Tự động chuyển đổi linh hoạt trên các thiết bị khác nhau, duy trì trải nghiệm người dùng hoàn hảo.</p>
+            <a href="index.html" class="btn-link">
+                &larr; Về trang Index
+            </a>
+        </div>
+
+    </main>
+
+</body>
+</html>
