@@ -1,0 +1,110 @@
+/* ==============================================================
+   1. BẢNG MÀU TÙY CHỈNH (CSS VARIABLES)
+   Bạn chỉ cần sửa màu ở đây, toàn bộ web sẽ tự động đổi màu!
+   ============================================================== */
+:root {
+    /* Màu giao diện mặc định */
+    --mau-nen-web: #ffffff;
+    --mau-chu-chinh: #374151;
+
+    /* Màu thẻ lúc bình thường */
+    --mau-nen-the: #f3f4f6;
+    --bo-goc-the: 10px;
+    --khoang-cach-cot: 20px;
+
+    /* ========== CỘT 1 ========== */
+    /* Bạn có thể đổi tên màu tiếng anh như red, blue, green hoặc mã HEX (#ff9a9e) */
+    --mau-hover-cot-1: linear-gradient(45deg, #ff9a9e, #fecfef, #ff9a9e);
+    --mau-vien-cot-1: #fecfef;
+    --mau-chu-cot-1: #9f1239;
+    --bong-do-cot-1: rgba(255, 154, 158, 0.5);
+
+    /* ========== CỘT 2 ========== */
+    --mau-hover-cot-2: linear-gradient(45deg, #a18cd1, #fbc2eb, #a18cd1);
+    --mau-vien-cot-2: #fbc2eb;
+    --mau-chu-cot-2: #3730a3;
+    --bong-do-cot-2: rgba(161, 140, 209, 0.5);
+
+    /* ========== CỘT 3 ========== */
+    --mau-hover-cot-3: linear-gradient(45deg, #84fab0, #8fd3f4, #84fab0);
+    --mau-vien-cot-3: #8fd3f4;
+    --mau-chu-cot-3: #065f46;
+    --bong-do-cot-3: rgba(132, 250, 176, 0.5);
+}
+
+/* ==============================================================
+   2. CẤU TRÚC VÀ BỐ CỤC CHÍNH (HTML, BODY, GRID)
+   ============================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 50px;
+    background-color: var(--mau-nen-web); /* Sử dụng biến màu bên trên */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--khoang-cach-cot);          /* Sử dụng biến khoảng cách */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ==============================================================
+   3. ĐỊNH DẠNG TỪNG THẺ VÀ HIỆU ỨNG CHUYỂN ĐỘNG
+   ============================================================== */
+.grid-item {
+    background-color: var(--mau-nen-the);
+    border-radius: var(--bo-goc-the);
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--mau-chu-chinh);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    
+    background-size: 200% 200%;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 2px solid transparent; 
+}
+
+.grid-item:hover {
+    transform: translateY(-12px) scale(1.02);
+    color: #ffffff;
+    animation: moveGradient 3s ease infinite;
+    transition: all 0.35s ease-out;
+}
+
+/* Gắn biến màu riêng biệt vào từng cột khi hover */
+.grid-item:nth-child(1):hover {
+    background-image: var(--mau-hover-cot-1);
+    border-color: var(--mau-vien-cot-1);
+    box-shadow: 0 15px 30px var(--bong-do-cot-1);
+    color: var(--mau-chu-cot-1);
+}
+
+.grid-item:nth-child(2):hover {
+    background-image: var(--mau-hover-cot-2);
+    border-color: var(--mau-vien-cot-2);
+    box-shadow: 0 15px 30px var(--bong-do-cot-2);
+    color: var(--mau-chu-cot-2);
+}
+
+.grid-item:nth-child(3):hover {
+    background-image: var(--mau-hover-cot-3);
+    border-color: var(--mau-vien-cot-3);
+    box-shadow: 0 15px 30px var(--bong-do-cot-3);
+    color: var(--mau-chu-cot-3);
+}
+
+/* Animation dải màu mượt mà */
+@keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
