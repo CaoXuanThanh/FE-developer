@@ -3,46 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Layout - Grid & Flexbox</title>
+    <title>Flexbox & Grid Demo</title>
     <link rel="stylesheet" href="hoatdong2.css">
 </head>
 <body>
 
-    <!-- Vùng chứa Grid Layout -->
-    <div class="portfolio-layout">
-        
-        <header class="header">
-            <h1>Portfolio Cá Nhân</h1>
-        </header>
+    <!-- Yêu cầu 1: Flexbox căn giữa -->
+    <div class="flex-wrapper">
+        <div class="container">
+            <h2>Hộp nội dung được căn giữa</h2>
+            <p>Sử dụng Flexbox</p>
+        </div>
+    </div>
 
-        <aside class="sidebar">
-            <h3>Thông tin</h3>
-            <p>Tên: Cao Xuan Thanh</p>
-            <p>Vị trí: Frontend Developer</p>
-        </aside>
-
-        <main class="main-content">
-            <h2>Giới thiệu bản thân</h2>
-            <p>Xin chào! Mình là một lập trình viên đam mê thiết kế giao diện web, đặc biệt yêu thích việc sử dụng Grid và Flexbox để tối ưu hóa trải nghiệm người dùng.</p>
-
-            <!-- Khu vực Flexbox -->
-            <div class="skills-section">
-                <h3>Kỹ năng (Skills)</h3>
-                <div class="skills-list">
-                    <div class="skill-item">HTML5</div>
-                    <div class="skill-item">CSS3</div>
-                    <div class="skill-item">JavaScript</div>
-                    <div class="skill-item">ReactJS</div>
-                    <div class="skill-item">Figma</div>
-                    <div class="skill-item">UI/UX Design</div>
-                </div>
-            </div>
-        </main>
-
-        <footer class="footer">
-            &copy; 2024 Bản quyền thuộc về Cao Xuan Thanh.
-        </footer>
-
+    <!-- Yêu cầu 2: CSS Grid 3 cột -->
+    <div class="grid-layout">
+        <div class="grid-item">Cột 1</div>
+        <div class="grid-item">Cột 2</div>
+        <div class="grid-item">Cột 3</div>
     </div>
 
 </body>
