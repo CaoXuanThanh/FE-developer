@@ -1,0 +1,58 @@
+/* Reset CSS cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   1. FLEXBOX: Căn giữa đối tượng
+   ========================================= */
+.flex-wrapper {
+    /* Đảm bảo vùng chứa có chiều cao toàn màn hình để có thể căn giữa theo chiều dọc */
+    height: 100vh; 
+    
+    /* Thiết lập Flexbox */
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+    
+    background-color: #e2e8f0; /* Màu nền phụ để dễ quan sát */
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* =========================================
+   2. CSS GRID: Bố cục 3 cột
+   ========================================= */
+.grid-layout {
+    /* Thiết lập Grid */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cột, mỗi cột chiếm 1 phần bằng nhau (1 fraction) */
+    gap: 20px; /* Khoảng cách giữa các cột thay cho margin */
+    
+    padding: 40px;
+    background-color: #ffffff;
+}
+
+.grid-item {
+    background-color: #f0f0f0; /* Màu nền xám nhạt */
+    border-radius: 10px;       /* Bo góc 10px */
+    padding: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Responsive cơ bản để lưới tự co giãn tốt hơn trên điện thoại */
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột trên màn hình nhỏ */
+    }
+}
