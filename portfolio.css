@@ -35,9 +35,10 @@ body {
 /* ==========================================================
    PROMPT 1: BỐ CỤC TỔNG THỂ VỚI CSS GRID
    - Header chiếm toàn bộ chiều ngang
-   - Sidebar rộng 250px (hoặc 25%), Main chiếm phần còn lại (1fr)
+   - Sidebar rộng 250px (hoặc 25%), Main chiếm phần còn lại (1fr / 75%)
    - Footer dưới cùng chiếm toàn bộ chiều ngang
    - Sử dụng grid-template-areas quản lý
+   - Tuyệt đối không dùng float hay clear thừa thãi
 ========================================================== */
 .portfolio-layout {
     display: grid;
@@ -169,7 +170,7 @@ body {
     padding: 10px 0;
 }
 
-/* Từng thẻ kỹ năng */
+/* Từng thẻ kỹ năng con */
 .skill-item {
     background-color: var(--cyan-light);
     color: var(--cyan-dark);
@@ -208,7 +209,6 @@ body {
 ========================================================== */
 @media (max-width: 768px) {
     .portfolio-layout {
-        /* Chuyển thành 1 cột xếp chồng dọc khi xem trên điện thoại */
         grid-template-columns: 1fr;
         grid-template-areas:
             "header"

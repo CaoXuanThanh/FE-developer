@@ -4,8 +4,227 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Cá Nhân - CSS Grid & Flexbox</title>
-    <!-- Liên kết file CSS của Hoạt động 2 -->
     <link rel="stylesheet" href="portfolio.css">
+    <style>
+        /* ==========================================================
+           HOẠT ĐỘNG 2: XÂY DỰNG HỆ THỐNG LƯỚI (PORTFOLIO CÁ NHÂN)
+           - Nhúng CSS trực tiếp để chạy độc lập mượt mà ở mọi nơi
+        ========================================================== */
+
+        /* 1. MÔ HÌNH HỘP (BOX MODEL) CHUẨN: Không để padding/margin làm tràn khung */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cyan-primary: #06b6d4;
+            --cyan-hover: #0891b2;
+            --cyan-dark: #0e7490;
+            --cyan-light: #ecfeff;
+            --cyan-border: #a5f3fc;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --shadow-soft: 0 4px 20px rgba(6, 182, 212, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================
+           PROMPT 1: BỐ CỤC TỔNG THỂ VỚI CSS GRID
+           - Header chiếm toàn bộ chiều ngang
+           - Sidebar rộng 250px (hoặc 25%), Main chiếm phần còn lại (1fr / 75%)
+           - Footer chiếm toàn bộ chiều ngang phía dưới
+           - Quản lý bằng grid-template-areas
+           - Tuyệt đối KHÔNG dùng float: left / clear: both
+        ========================================================== */
+        .portfolio-layout {
+            display: grid;
+            min-height: 100vh;
+            /* Cột 1: 250px (Sidebar), Cột 2: phần còn lại (Main Content) */
+            grid-template-columns: 250px 1fr;
+            /* Header tự động, Main dãn hết không gian (1fr), Footer tự động */
+            grid-template-rows: auto 1fr auto;
+            /* Quản lý vùng trực quan bằng grid-template-areas */
+            grid-template-areas:
+                "header  header"
+                "sidebar main"
+                "footer  footer";
+            gap: 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Gán từng phần tử vào vùng tương ứng (grid-area) */
+        .header {
+            grid-area: header;
+            background-color: var(--bg-card);
+            padding: 24px 32px;
+            border-radius: 12px;
+            border: 1px solid var(--cyan-border);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: var(--cyan-dark);
+        }
+
+        .header p {
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background-color: var(--bg-card);
+            padding: 28px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--cyan-border);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .sidebar .profile {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .sidebar .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-dark));
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 auto 12px;
+        }
+
+        .sidebar .nav-list {
+            list-style: none;
+        }
+
+        .sidebar .nav-list li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar .nav-list a {
+            display: block;
+            padding: 10px 14px;
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar .nav-list a:hover {
+            background-color: var(--cyan-light);
+            color: var(--cyan-dark);
+            padding-left: 18px;
+        }
+
+        .main-content {
+            grid-area: main;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--cyan-border);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card h2 {
+            color: var(--cyan-dark);
+            font-size: 20px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--cyan-light);
+            padding-bottom: 8px;
+        }
+
+        /* ==========================================================
+           PROMPT 2: KHU VỰC KỸ NĂNG (SKILLS SECTION VỚI FLEXBOX)
+           - display: flex (dạng hàng ngang)
+           - flex-wrap: wrap (tự động xuống dòng khi màn hình co lại)
+           - gap: 15px (khoảng cách giữa các item là 15px)
+           - justify-content: center (căn giữa các item)
+        ========================================================== */
+        .skills-list {
+            display: flex;             /* 1. Kích hoạt Flexbox hàng ngang */
+            flex-wrap: wrap;           /* 2. Tự động xuống dòng */
+            gap: 15px;                 /* 3. Khoảng cách giữa các item 15px */
+            justify-content: center;   /* 4. Căn giữa các item */
+            padding: 10px 0;
+        }
+
+        /* Thẻ kỹ năng con */
+        .skill-item {
+            background-color: var(--cyan-light);
+            color: var(--cyan-dark);
+            border: 1px solid var(--cyan-border);
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.08);
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+
+        .skill-item:hover {
+            background-color: var(--cyan-primary);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            grid-area: footer;
+            background-color: var(--bg-card);
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid var(--cyan-border);
+            box-shadow: var(--shadow-soft);
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        /* ==========================================================
+           RESPONSIVE CHO MÀN HÌNH NHỎ (MOBILE / TABLET)
+        ========================================================== */
+        @media (max-width: 768px) {
+            .portfolio-layout {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "main"
+                    "footer";
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -23,7 +242,7 @@
             </div>
         </header>
 
-        <!-- 2. Sidebar: Cột bên trái rộng 250px -->
+        <!-- 2. Sidebar: Cột bên trái rộng 250px (25%) -->
         <aside class="sidebar">
             <div class="profile">
                 <div class="avatar">NA</div>
@@ -38,7 +257,7 @@
             </ul>
         </aside>
 
-        <!-- 3. Main Content: Chiếm phần còn lại (1fr) -->
+        <!-- 3. Main Content: Chiếm phần còn lại (75% / 1fr) -->
         <main class="main-content">
             
             <!-- Thẻ Giới thiệu -->
@@ -49,7 +268,7 @@
                 </p>
             </section>
 
-            <!-- Thẻ Kỹ Năng (Yêu cầu Prompt 2: Dùng Flexbox wrap và gap 15px) -->
+            <!-- Thẻ Kỹ Năng (Yêu cầu Prompt 2: Flexbox wrap, gap 15px, căn giữa) -->
             <section id="skills" class="card">
                 <h2>Kỹ Năng Chuyên Môn</h2>
                 <div class="skills-list">
@@ -69,7 +288,7 @@
             <section id="projects" class="card">
                 <h2>Dự Án Nổi Bật</h2>
                 <p>
-                    Hệ thống Portfolio cá nhân và Dashboard quản lý thiết kế chuẩn W3C, kiểm soát chặt chẽ Box Model và loại bỏ hoàn toàn các thuộc tính lỗi thời.
+                    Hệ thống Portfolio cá nhân và Dashboard quản lý thiết kế chuẩn W3C, kiểm soát chặt chẽ Box Model và loại bỏ hoàn toàn các thuộc tính lỗi thời như float.
                 </p>
             </section>
 
