@@ -3,300 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Cá Nhân - CSS Grid & Flexbox</title>
+    <meta name="description" content="Portfolio cá nhân chuẩn UI/UX hiện đại - Lập trình viên Frontend & Thiết kế Web">
+    <title>Lương Minh Đạt | Frontend Developer & UI Designer</title>
+    <!-- Liên kết stylesheet bên ngoài chuẩn chỉnh, tối ưu bộ nhớ đệm (Cache) -->
     <link rel="stylesheet" href="portfolio.css">
-    <style>
-        /* ==========================================================
-           HOẠT ĐỘNG 2: XÂY DỰNG HỆ THỐNG LƯỚI (PORTFOLIO CÁ NHÂN)
-           - Nhúng CSS trực tiếp để chạy độc lập mượt mà ở mọi nơi
-        ========================================================== */
-
-        /* 1. MÔ HÌNH HỘP (BOX MODEL) CHUẨN: Không để padding/margin làm tràn khung */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --cyan-primary: #06b6d4;
-            --cyan-hover: #0891b2;
-            --cyan-dark: #0e7490;
-            --cyan-light: #ecfeff;
-            --cyan-border: #a5f3fc;
-            --bg-page: #f8fafc;
-            --bg-card: #ffffff;
-            --text-main: #1e293b;
-            --text-sub: #64748b;
-            --shadow-soft: 0 4px 20px rgba(6, 182, 212, 0.1);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-page);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        /* ==========================================================
-           PROMPT 1: BỐ CỤC TỔNG THỂ VỚI CSS GRID
-           - Header chiếm toàn bộ chiều ngang
-           - Sidebar rộng 250px (hoặc 25%), Main chiếm phần còn lại (1fr / 75%)
-           - Footer chiếm toàn bộ chiều ngang phía dưới
-           - Quản lý bằng grid-template-areas
-           - Tuyệt đối KHÔNG dùng float: left / clear: both
-        ========================================================== */
-        .portfolio-layout {
-            display: grid;
-            min-height: 100vh;
-            /* Cột 1: 250px (Sidebar), Cột 2: phần còn lại (Main Content) */
-            grid-template-columns: 250px 1fr;
-            /* Header tự động, Main dãn hết không gian (1fr), Footer tự động */
-            grid-template-rows: auto 1fr auto;
-            /* Quản lý vùng trực quan bằng grid-template-areas */
-            grid-template-areas:
-                "header  header"
-                "sidebar main"
-                "footer  footer";
-            gap: 20px;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Gán từng phần tử vào vùng tương ứng (grid-area) */
-        .header {
-            grid-area: header;
-            background-color: var(--bg-card);
-            padding: 24px 32px;
-            border-radius: 12px;
-            border: 1px solid var(--cyan-border);
-            box-shadow: var(--shadow-soft);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header h1 {
-            font-size: 24px;
-            color: var(--cyan-dark);
-        }
-
-        .header p {
-            color: var(--text-sub);
-            font-size: 14px;
-        }
-
-        .sidebar {
-            grid-area: sidebar;
-            background-color: var(--bg-card);
-            padding: 28px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--cyan-border);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .sidebar .profile {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .sidebar .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-dark));
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin: 0 auto 12px;
-        }
-
-        .sidebar .nav-list {
-            list-style: none;
-        }
-
-        .sidebar .nav-list li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar .nav-list a {
-            display: block;
-            padding: 10px 14px;
-            color: var(--text-main);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .sidebar .nav-list a:hover {
-            background-color: var(--cyan-light);
-            color: var(--cyan-dark);
-            padding-left: 18px;
-        }
-
-        .main-content {
-            grid-area: main;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .card {
-            background-color: var(--bg-card);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--cyan-border);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .card h2 {
-            color: var(--cyan-dark);
-            font-size: 20px;
-            margin-bottom: 16px;
-            border-bottom: 2px solid var(--cyan-light);
-            padding-bottom: 8px;
-        }
-
-        /* ==========================================================
-           PROMPT 2: KHU VỰC KỸ NĂNG (SKILLS SECTION VỚI FLEXBOX)
-           - display: flex (dạng hàng ngang)
-           - flex-wrap: wrap (tự động xuống dòng khi màn hình co lại)
-           - gap: 15px (khoảng cách giữa các item là 15px)
-           - justify-content: center (căn giữa các item)
-        ========================================================== */
-        .skills-list {
-            display: flex;             /* 1. Kích hoạt Flexbox hàng ngang */
-            flex-wrap: wrap;           /* 2. Tự động xuống dòng */
-            gap: 15px;                 /* 3. Khoảng cách giữa các item 15px */
-            justify-content: center;   /* 4. Căn giữa các item */
-            padding: 10px 0;
-        }
-
-        /* Thẻ kỹ năng con */
-        .skill-item {
-            background-color: var(--cyan-light);
-            color: var(--cyan-dark);
-            border: 1px solid var(--cyan-border);
-            padding: 10px 22px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.08);
-            transition: all 0.25s ease;
-            cursor: default;
-        }
-
-        .skill-item:hover {
-            background-color: var(--cyan-primary);
-            color: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
-        }
-
-        /* Footer */
-        .footer {
-            grid-area: footer;
-            background-color: var(--bg-card);
-            padding: 20px;
-            text-align: center;
-            border-radius: 12px;
-            border: 1px solid var(--cyan-border);
-            box-shadow: var(--shadow-soft);
-            color: var(--text-sub);
-            font-size: 14px;
-        }
-
-        /* ==========================================================
-           RESPONSIVE CHO MÀN HÌNH NHỎ (MOBILE / TABLET)
-        ========================================================== */
-        @media (max-width: 768px) {
-            .portfolio-layout {
-                grid-template-columns: 1fr;
-                grid-template-areas:
-                    "header"
-                    "sidebar"
-                    "main"
-                    "footer";
-            }
-        }
-    </style>
 </head>
 <body>
 
     <!-- Khung bố cục tổng thể sử dụng CSS Grid -->
     <div class="portfolio-layout">
 
-        <!-- 1. Header: Chiếm toàn bộ chiều ngang -->
+        <!-- ==========================================================
+             1. HEADER: Chiếm trọn chiều ngang, thương hiệu cá nhân
+             ========================================================== -->
         <header class="header">
-            <div>
-                <h1>Nguyễn Văn A</h1>
-                <p>Frontend Developer / UI Designer</p>
+            <div class="header-left">
+                <h1>Lương Minh Đạt</h1>
+                <p>Senior Frontend Developer & UI/UX Specialist</p>
             </div>
-            <div class="header-status">
-                <span style="color: #059669; font-weight: 600;">● Đang nhận dự án</span>
+            <div class="header-actions">
+                <div class="header-status">
+                    <span class="status-dot"></span>
+                    <span>Đang sẵn sàng nhận dự án</span>
+                </div>
+                <a href="#contact" class="btn-cta">
+                    <span>Liên hệ ngay</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
             </div>
         </header>
 
-        <!-- 2. Sidebar: Cột bên trái rộng 250px (25%) -->
+        <!-- ==========================================================
+             2. SIDEBAR: Cột trái (Desktop) hoặc Top Bar (Mobile)
+             ========================================================== -->
         <aside class="sidebar">
             <div class="profile">
-                <div class="avatar">NA</div>
-                <h3>Thông Tin</h3>
-                <p style="color: #64748b; font-size: 13px;">Hà Nội, Việt Nam</p>
+                <div class="avatar" title="Lương Minh Đạt">NA</div>
+                <h3>Lương Minh Đạt</h3>
+                <div class="profile-location">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>Hà Nội, Việt Nam</span>
+                </div>
             </div>
-            <ul class="nav-list">
-                <li><a href="#about">Giới thiệu</a></li>
-                <li><a href="#skills">Kỹ năng</a></li>
-                <li><a href="#projects">Dự án</a></li>
-                <li><a href="#contact">Liên hệ</a></li>
-            </ul>
+
+            <!-- Menu điều hướng mượt mà (Smooth Anchor Links) -->
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#about">👋 Giới thiệu</a></li>
+                    <li><a href="#services">⚡ Dịch vụ</a></li>
+                    <li><a href="#skills">🛠️ Kỹ năng</a></li>
+                    <li><a href="#projects">💻 Dự án</a></li>
+                    <li><a href="#contact">📫 Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <!-- Liên kết mạng xã hội nhanh -->
+            <div class="sidebar-socials">
+                <a href="https://github.com" target="_blank" rel="noopener" title="GitHub">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="mailto:example@gmail.com" title="Email">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
         </aside>
 
-        <!-- 3. Main Content: Chiếm phần còn lại (75% / 1fr) -->
+        <!-- ==========================================================
+             3. MAIN CONTENT: Khu vực nội dung chính
+             ========================================================== -->
         <main class="main-content">
             
-            <!-- Thẻ Giới thiệu -->
+            <!-- Phần Giới thiệu & Số liệu thống kê -->
             <section id="about" class="card">
-                <h2>Giới Thiệu Bản Thân</h2>
+                <div class="card-header">
+                    <h2>Giới Thiệu Bản Thân</h2>
+                    <span class="badge">Về tôi</span>
+                </div>
                 <p>
-                    Chào bạn! Tôi là một lập trình viên Frontend đam mê xây dựng giao diện người dùng hiện đại, tối ưu trải nghiệm và tương thích trên đa nền tảng thiết bị với chuẩn CSS Grid và Flexbox.
+                    Chào bạn! Tôi là một lập trình viên Frontend đam mê kiến tạo trải nghiệm người dùng tốc độ cao, giao diện thẩm mỹ và trực quan. Tôi luôn áp dụng chuẩn mực thiết kế <strong>WCAG</strong>, cấu trúc <strong>CSS Grid & Flexbox</strong> hiện đại và tối ưu hóa từng mili-giây tải trang để mang lại trải nghiệm mượt mà nhất trên mọi thiết bị.
                 </p>
-            </section>
 
-            <!-- Thẻ Kỹ Năng (Yêu cầu Prompt 2: Flexbox wrap, gap 15px, căn giữa) -->
-            <section id="skills" class="card">
-                <h2>Kỹ Năng Chuyên Môn</h2>
-                <div class="skills-list">
-                    <span class="skill-item">HTML5</span>
-                    <span class="skill-item">CSS3</span>
-                    <span class="skill-item">JavaScript</span>
-                    <span class="skill-item">Flexbox</span>
-                    <span class="skill-item">CSS Grid</span>
-                    <span class="skill-item">Responsive Design</span>
-                    <span class="skill-item">Git / GitHub</span>
-                    <span class="skill-item">UI/UX Design</span>
-                    <span class="skill-item">Figma</span>
+                <!-- Số liệu nổi bật tạo độ tin cậy -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">Năm kinh nghiệm</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Dự án hoàn thành</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Khách hàng hài lòng</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99/100</span>
+                        <span class="stat-label">Điểm Google Vitals</span>
+                    </div>
                 </div>
             </section>
 
-            <!-- Thẻ Dự Án -->
-            <section id="projects" class="card">
-                <h2>Dự Án Nổi Bật</h2>
+            <!-- ==========================================================
+                 YÊU CẦU: KHU VỰC DỊCH VỤ (.SERVICES-CONTAINER)
+                 > 1024px: 4 cột | 768px-1024px: 2 cột | < 768px: 1 cột | gap: 20px
+                 ========================================================== -->
+            <section id="services" class="card">
+                <div class="card-header">
+                    <h2>Dịch Vụ Cung Cấp</h2>
+                    <span class="badge">4 Chuyên môn</span>
+                </div>
                 <p>
-                    Hệ thống Portfolio cá nhân và Dashboard quản lý thiết kế chuẩn W3C, kiểm soát chặt chẽ Box Model và loại bỏ hoàn toàn các thuộc tính lỗi thời như float.
+                    Giải pháp toàn diện từ khâu thiết kế giao diện cho đến lập trình và tối ưu hóa hệ thống web thương mại điện tử, landing page và ứng dụng SaaS.
                 </p>
+
+                <div class="services-container">
+                    
+                    <!-- Dịch vụ 1 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                <path d="M2 2l7.586 7.586"></path>
+                                <circle cx="11" cy="11" r="2"></circle>
+                            </svg>
+                        </div>
+                        <h3>Thiết Kế UI/UX</h3>
+                        <p>Nghiên cứu hành vi người dùng, xây dựng wireframe, prototype và design system chuẩn mực trên Figma.</p>
+                    </div>
+
+                    <!-- Dịch vụ 2 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Lập Trình Web</h3>
+                        <p>Phát triển giao diện phản hồi nhanh, viết mã sạch (Clean Code), hỗ trợ đa trình duyệt và chuẩn SEO.</p>
+                    </div>
+
+                    <!-- Dịch vụ 3 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3>Responsive Design</h3>
+                        <p>Tối ưu giao diện hiển thị liền mạch trên mọi độ phân giải: Mobile, Tablet, Laptop và Desktop Ultra-wide.</p>
+                    </div>
+
+                    <!-- Dịch vụ 4 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 14 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Tối Ưu Hiệu Năng</h3>
+                        <p>Tăng tốc độ tải trang, nâng cao chỉ số Core Web Vitals, nén tài nguyên và giảm thiểu hiện tượng giật lag.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Phần Kỹ Năng (Flexbox Wrap) -->
+            <section id="skills" class="card">
+                <div class="card-header">
+                    <h2>Kỹ Năng Kỹ Thuật</h2>
+                    <span class="badge">Công nghệ</span>
+                </div>
+                <div class="skills-list">
+                    <span class="skill-item">HTML5 Semantic</span>
+                    <span class="skill-item">CSS3 & Variables</span>
+                    <span class="skill-item">JavaScript ES6+</span>
+                    <span class="skill-item">CSS Grid System</span>
+                    <span class="skill-item">Flexbox Layout</span>
+                    <span class="skill-item">Responsive Web</span>
+                    <span class="skill-item">Web Accessibility (A11Y)</span>
+                    <span class="skill-item secondary">Figma Design</span>
+                    <span class="skill-item secondary">UI/UX Prototyping</span>
+                    <span class="skill-item secondary">Design System</span>
+                    <span class="skill-item">Git / GitHub</span>
+                    <span class="skill-item">Web Performance</span>
+                </div>
+            </section>
+
+            <!-- Phần Dự Án Nổi Bật -->
+            <section id="projects" class="card">
+                <div class="card-header">
+                    <h2>Dự Án Đã Thực Hiện</h2>
+                    <span class="badge">Portfolio</span>
+                </div>
+                <div class="projects-grid">
+                    
+                    <!-- Dự án 1 -->
+                    <article class="project-item">
+                        <div class="project-top">
+                            <h3>Hệ Thống Dashboard Quản Trị</h3>
+                            <p>Bảng điều khiển kinh doanh thông minh với biểu đồ trực quan, tối ưu tải trang dưới 1 giây và phân quyền người dùng chặt chẽ.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML5</span>
+                                <span class="project-tag">CSS Grid</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                        </div>
+                        <a href="grid.html" class="project-link">
+                            <span>Khám phá Grid Demo</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- Dự án 2 -->
+                    <article class="project-item">
+                        <div class="project-top">
+                            <h3>Website Thương Mại Điện Tử</h3>
+                            <p>Giao diện bán hàng trực tuyến với giỏ hàng tương tác, bộ lọc sản phẩm mượt mà và tương thích cảm ứng trên mọi dòng smartphone.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Responsive</span>
+                                <span class="project-tag">Flexbox</span>
+                                <span class="project-tag">UI/UX</span>
+                            </div>
+                        </div>
+                        <a href="index.html" class="project-link">
+                            <span>Xem trang chủ Index</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Phần Liên Hệ (Giải quyết triệt để Dead Link #contact) -->
+            <section id="contact" class="card">
+                <div class="card-header">
+                    <h2>Kết Nối & Hợp Tác</h2>
+                    <span class="badge">Sẵn sàng phản hồi</span>
+                </div>
+                <p>
+                    Bạn có một dự án thú vị cần hiện thực hóa hoặc muốn nâng cấp giao diện website hiện có? Đừng ngần ngại liên hệ với tôi qua các kênh bên dưới:
+                </p>
+
+                <div class="contact-grid">
+                    <a href="mailto:nguyenvana@gmail.com" class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-info">
+                            <strong>Email Trực Tiếp</strong>
+                            <span>nguyenvana@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="tel:0987654321" class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-info">
+                            <strong>Số Điện Thoại</strong>
+                            <span>+84 987 654 321</span>
+                        </div>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-info">
+                            <strong>Mạng LinkedIn</strong>
+                            <span>linkedin.com/in/nguyenvana</span>
+                        </div>
+                    </a>
+                </div>
             </section>
 
         </main>
 
-        <!-- 4. Footer: Dưới cùng chiếm toàn bộ chiều ngang -->
+        <!-- ==========================================================
+             4. FOOTER: Bản quyền & Trở về đầu trang
+             ========================================================== -->
         <footer class="footer">
-            <p>&copy; 2026 Nguyễn Văn A - Thiết kế bằng CSS Grid & Flexbox chuẩn chỉnh.</p>
+            <p>&copy; 2026 Nguyễn Văn A. Thiết kế & phát triển chuẩn W3C, CSS Grid & Flexbox.</p>
+            <a href="#">↑ Lên đầu trang</a>
         </footer>
 
     </div>
