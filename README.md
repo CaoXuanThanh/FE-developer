@@ -1,7 +1,7 @@
 <div align="center">
 
   <!-- PROJECT LOGO / BANNER -->
-  <a href="https://github.com/CaoXuanThanh/voc-web-ai">
+  <a href="https://github.com/CaoXuanThanh/FE-developer">
     <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/HTML.svg" alt="Logo" width="80" height="80">
   </a>
 
@@ -10,14 +10,14 @@
   <p align="center">
     Dự án xây dựng giao diện Portfolio hiện đại với HTML5 Semantic, CSS Grid, Flexbox và CSS Custom Properties (Design Tokens) đạt chuẩn xu hướng 2026.
     <br />
-    <a href="https://github.com/CaoXuanThanh/voc-web-ai"><strong>Khám phá tài liệu »</strong></a>
+    <a href="https://github.com/CaoXuanThanh/FE-developer"><strong>Khám phá tài liệu »</strong></a>
     <br />
     <br />
     <a href="#-demo--giao-diện">Xem Demo</a>
     ·
-    <a href="https://github.com/CaoXuanThanh/voc-web-ai/issues">Báo lỗi</a>
+    <a href="https://github.com/CaoXuanThanh/FE-developer/issues">Báo lỗi</a>
     ·
-    <a href="https://github.com/CaoXuanThanh/voc-web-ai/issues">Đóng góp tính năng</a>
+    <a href="https://github.com/CaoXuanThanh/FE-developer/issues">Đóng góp tính năng</a>
   </p>
 
   <!-- BADGES (Shields.io) -->
@@ -126,7 +126,7 @@ voc-web-ai/
 
 1. **Clone kho lưu trữ về máy tính:**
    ```bash
-   git clone https://github.com/CaoXuanThanh/voc-web-ai.git
+   git clone https://github.com/CaoXuanThanh/FE-developer.git
    ```
 
 2. **Di chuyển vào thư mục dự án:**
@@ -201,7 +201,7 @@ Dự án được phân phối dưới giấy phép **MIT License**. Xem chi ti�
 * **Tác giả:** Tất Huy Tuấn
 * **Email:** 125000597@lachong.edu.vn
 * **GitHub:** [@TatHuyTuan](https://github.com/TatHuyTuan)
-* **Dự án:** [https://github.com/CaoXuanThanh/voc-web-ai](https://github.com/CaoXuanThanh/voc-web-ai)
+* **Dự án:** [https://github.com/CaoXuanThanh/FE-developer](https://github.com/CaoXuanThanh/FE-developer)
 
 <div align="center">
   <small>⭐ Hãy thả một Star nếu bạn thấy dự án này hữu ích!</small>
