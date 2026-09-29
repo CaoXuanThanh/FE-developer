@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="profile.css">
 </head>
 <body>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
 
     <!-- SIDEBAR BÊN TRÁI -->
     <aside class="sidebar">
@@ -150,5 +154,17 @@
         </footer>
     </main>
 
+    <script>
+        // Khi toàn bộ trang (bao gồm cả tài nguyên như ảnh) đã tải xong
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            // Thêm class fade-out để mờ dần
+            preloader.classList.add('fade-out');
+            // Ẩn hoàn toàn khỏi DOM sau khi hiệu ứng transition chạy xong
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500); 
+        });
+    </script>
 </body>
 </html>
