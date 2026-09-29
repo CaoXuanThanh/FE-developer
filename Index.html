@@ -23,7 +23,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div class="loader-wrapper" id="preloader">
+    <div class="loader"></div>
+</div>
     <!-- =====================================================================
          BỐ CỤC CHÍNH (PORTFOLIO CONTAINER)
          - Desktop (>= 768px): CSS Grid 2 cột (Sidebar chiếm 320px, Main chiếm 1fr)
@@ -277,6 +279,13 @@
 
         </main>
     </div>
-
+<script>
+    window.addEventListener("load", function () {
+        // Dùng setTimeout để đợi đúng 2000 mili-giây (tức là 2 giây)
+        setTimeout(function() {
+            document.getElementById("preloader").style.display = "none";
+        }, 2000); 
+    });
+</script>
 </body>
 </html>
