@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Căn Giữa Flexbox - Tông Màu Cyan Hiện Đại</title>
+    <!-- 1. CSS dùng chung cho giao diện thẻ card và màu sắc -->
+    <link rel="stylesheet" href="card.css">
+    <!-- 2. CSS riêng biệt cho bố cục Flexbox trang Index -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Thẻ container 100vh căn giữa Flexbox -->
+    <div class="container">
+        <main class="content-box">
+            <!-- Icon công nghệ màu Cyan -->
+            <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+            </div>
+
+            <h1>Căn giữa thành công!</h1>
+            <p>Thẻ <code>.container</code> có chiều cao <strong>100vh</strong>.</p>
+            <p>Nội dung được căn giữa bằng Flexbox (<code>justify-content: center</code> và <code>align-items: center</code>).</p>
+
+            <a href="grid.html" class="btn-cyan">
+                <span>Xem giao diện Grid 3 cột</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </main>
+    </div>
+
+</body>
+</html>

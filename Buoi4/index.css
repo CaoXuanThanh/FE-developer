@@ -1,0 +1,20 @@
+/* ==========================================================
+   INDEX.CSS - BỐ CỤC CHUYÊN BIỆT CHO TRANG INDEX (FLEXBOX)
+========================================================== */
+
+body {
+    min-height: 100vh;
+}
+
+/* 
+   YÊU CẦU:
+   - Chiều cao toàn màn hình: 100vh
+   - Flexbox căn giữa theo cả chiều ngang và chiều dọc
+*/
+.container {
+    height: 100vh;              /* Chiều cao 100% viewport */
+    display: flex;              /* Kích hoạt Flexbox */
+    justify-content: center;   /* Căn giữa theo chiều ngang */
+    align-items: center;       /* Căn giữa theo chiều dọc */
+    padding: 24px;
+}

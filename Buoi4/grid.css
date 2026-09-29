@@ -1,0 +1,57 @@
+/* ==========================================================
+   GRID.CSS - BỐ CỤC CHUYÊN BIỆT CHO TRANG GRID (CSS GRID)
+========================================================== */
+
+body {
+    padding: 60px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Phần tiêu đề trang Grid */
+.header-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-section span {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--cyan-dark);
+    background-color: var(--cyan-badge);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.header-section h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* 
+   YÊU CẦU:
+   - Bố cục lưới CSS Grid 3 cột bằng nhau
+   - Khoảng cách giữa các cột là 20px
+*/
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cột tỉ lệ 1fr bằng nhau */
+    gap: 20px;                             /* Khoảng cách 20px giữa các cột */
+    max-width: 1050px;
+    width: 100%;
+}
+
+/* Tương thích cho màn hình nhỏ */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
