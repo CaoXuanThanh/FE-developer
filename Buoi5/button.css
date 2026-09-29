@@ -1,0 +1,120 @@
+/* ==========================================================================
+   CSS BUTTON COMPONENT: "GỬI TIN NHẮN"
+   Tối ưu hóa UI/UX chuẩn Modern Web Design
+   ========================================================================== */
+
+:root {
+  --btn-primary: #4f46e5;
+  --btn-primary-hover: #4338ca;
+  --btn-gradient-start: #6366f1;
+  --btn-gradient-end: #4f46e5;
+  --btn-shadow-color: rgba(79, 70, 229, 0.35);
+  --btn-shadow-hover: rgba(79, 70, 229, 0.5);
+  
+  /* Hàm cubic-bezier tạo cảm giác vật lý đàn hồi (elastic/spring feel) tự nhiên */
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Hàm cubic-bezier siêu mượt (smooth deceleration) chuẩn Apple / Vercel */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 1. Trạng thái cơ bản (Normal State) */
+.btn-send-message {
+  /* Box model & Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  
+  /* Typography */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  text-decoration: none;
+
+  /* Thiết kế bề mặt */
+  background: linear-gradient(135deg, var(--btn-gradient-start) 0%, var(--btn-gradient-end) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+
+  /* Đổ bóng tự nhiên khi ở trạng thái nghỉ */
+  box-shadow: 
+    0 4px 6px -1px var(--btn-shadow-color),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
+  /* Khởi tạo transform gốc */
+  transform: translateY(0) scale(1);
+
+  /* CSS Transition với cubic-bezier cho chuyển động sống động */
+  transition: 
+    transform 0.28s var(--ease-elastic),
+    box-shadow 0.28s var(--ease-smooth),
+    background 0.3s ease,
+    filter 0.2s ease;
+
+  /* Tối ưu hiệu năng render GPU */
+  will-change: transform, box-shadow;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Trạng thái rê chuột (Hover State) */
+.btn-send-message:hover {
+  /* Nâng lên chính xác 3px */
+  transform: translateY(-3px) scale(1);
+
+  /* Đổi màu: Tươi tắn và nổi bật hơn */
+  background: linear-gradient(135deg, #6d6ff6 0%, #4338ca 100%);
+  filter: brightness(1.05);
+
+  /* Bóng đổ đậm hơn, toả rộng và đổ xuống dưới nhiều hơn theo chiều nâng của nút */
+  box-shadow: 
+    0 14px 24px -4px var(--btn-shadow-hover),
+    0 8px 12px -3px rgba(0, 0, 0, 0.15);
+}
+
+/* Hiệu ứng kèm theo cho icon khi hover */
+.btn-send-message:hover .btn-icon {
+  transform: translate(3px, -2px) rotate(-8deg);
+}
+
+/* 3. Trạng thái nhấn (Active State / Click) */
+.btn-send-message:active {
+  /* Thu nhỏ nhẹ lại (scale 0.97) và hạ xuống sát mặt phẳng tạo cảm giác "đã bấm" / tactile feedback */
+  transform: translateY(1px) scale(0.97);
+
+  /* Bóng thụt lại như một chiếc phím đàn hồi bị nhấn chìm */
+  box-shadow: 
+    0 2px 4px 0 var(--btn-shadow-color),
+    0 1px 2px 0 rgba(0, 0, 0, 0.1);
+
+  /* Phản hồi tức thì khi click */
+  transition-duration: 0.08s;
+}
+
+.btn-send-message:active .btn-icon {
+  transform: translate(1px, 0px) scale(0.95);
+  transition-duration: 0.08s;
+}
+
+/* 4. Trạng thái Focus hỗ trợ khả năng tiếp cận (Accessibility) */
+.btn-send-message:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.5);
+  outline-offset: 3px;
+}
+
+/* Icon transition */
+.btn-send-message .btn-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.28s var(--ease-elastic);
+  flex-shrink: 0;
+}

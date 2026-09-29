@@ -798,3 +798,108 @@ section {
         text-align: center;
     }
 }
+
+/* ==========================================================
+   5. LOADING INDICATOR (PRELOADER) - VÒNG TRÒN XOAY 360 ĐỘ VÔ HẠN
+   - Sử dụng border-radius: 50% tạo hình tròn
+   - Viền mờ làm ray dẫn hướng
+   - border-top-color khác biệt tạo vệt xoay
+   - @keyframes xoay tròn liên tục vô hạn
+   ========================================================== */
+
+/* Khung màn che Preloader toàn màn hình */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-16);
+    z-index: 99999;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s ease;
+}
+
+/* Lớp ẩn mượt mà khi hoàn tất tải trang */
+.preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Vòng tròn Loading */
+.loading-spinner {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%; /* Bo tròn 50% tạo thành hình tròn hoàn hảo */
+    
+    /* Viền các cạnh còn lại làm ray mờ */
+    border: 4px solid rgba(37, 99, 235, 0.15);
+    
+    /* ĐIỂM CỐT LÕI: border-top-color khác biệt tạo hiệu ứng vệt sáng khi quay */
+    border-top-color: var(--color-primary);
+    
+    /* Animation xoay 360 độ vô hạn */
+    animation: spin-loading 0.85s linear infinite;
+    
+    /* Tối ưu render phần cứng GPU */
+    will-change: transform;
+    box-shadow: 0 0 20px var(--color-primary-shadow-soft);
+}
+
+/* @keyframes xoay liên tục từ 0deg đến 360deg */
+@keyframes spin-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Dòng chữ phụ đề trạng thái tải */
+.loading-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    animation: pulse-loading-text 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-loading-text {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+        color: var(--color-primary);
+    }
+}
+
+/* ==========================================================
+   6. TỐI ƯU HÓA HIỆU NĂNG DI ĐỘNG (MOBILE GPU ACCELERATION)
+   - Thay thế hoàn toàn top/left bằng transform: translate(...)
+   - Cơ chế: Bỏ qua chu trình Layout (Reflow) và Repaint của CPU,
+     đẩy trực tiếp việc render sang Compositor Thread trên GPU
+   - will-change: transform chuẩn bị sẵn Layer riêng biệt,
+     triệt tiêu hiện tượng sụt giảm khung hình (Jank) trên điện thoại
+   ========================================================== */
+.btn-cta,
+.sidebar .nav-list a,
+.sidebar-socials a,
+.service-card,
+.skill-item,
+.project-item,
+.contact-card {
+    /* Đảm bảo phần tử được đưa lên Compositor Layer trên GPU */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+

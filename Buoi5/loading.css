@@ -1,0 +1,126 @@
+/* ==========================================================================
+   CSS LOADING SPINNER COMPONENT
+   Vòng tròn Loading xoay 360 độ vô hạn với @keyframes & border-top-color
+   ========================================================================== */
+
+:root {
+  --spinner-size: 56px;
+  --spinner-border-width: 5px;
+  --spinner-track-color: rgba(99, 102, 241, 0.15); /* Màu viền nền mờ */
+  --spinner-accent-color: #6366f1;                   /* Màu nổi bật ở đỉnh (border-top-color) */
+  --spinner-speed: 0.9s;                             /* Tốc độ quay */
+}
+
+/* 1. Phần tử vòng tròn Loading cơ bản */
+.spinner {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  
+  /* Tạo hình tròn hoàn hảo */
+  border-radius: 50%;
+  
+  /* Viền các cạnh còn lại (phần mờ/track) */
+  border: var(--spinner-border-width) solid var(--spinner-track-color);
+  
+  /* ĐIỂM CỐT LÕI: border-top-color khác biệt để tạo vệt xoay */
+  border-top-color: var(--spinner-accent-color);
+  
+  /* Animation xoay 360 độ liên tục vô hạn */
+  animation: spin var(--spinner-speed) linear infinite;
+  
+  /* Tối ưu render phần cứng GPU giúp chuyển động mượt 60/120fps */
+  will-change: transform;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+/* 2. Định nghĩa @keyframes xoay 360 độ */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   CÁC BIẾN THỂ KÍCH THƯỚC (SIZES) & MÀU SẮC (THEMES) CHO PORTFOLIO
+   ========================================================================== */
+
+/* Size nhỏ: Dùng cho nút bấm, badge */
+.spinner-sm {
+  --spinner-size: 24px;
+  --spinner-border-width: 3px;
+  --spinner-speed: 0.75s;
+}
+
+/* Size tiêu chuẩn: Dùng cho card dự án, widget */
+.spinner-md {
+  --spinner-size: 48px;
+  --spinner-border-width: 4px;
+  --spinner-speed: 0.85s;
+}
+
+/* Size lớn: Dùng cho Fullscreen Preloader trang Portfolio */
+.spinner-lg {
+  --spinner-size: 72px;
+  --spinner-border-width: 6px;
+  --spinner-speed: 1s;
+}
+
+/* Biến thể màu sắc Gradient / Brand Accent */
+.spinner-cyan {
+  --spinner-track-color: rgba(6, 182, 212, 0.15);
+  --spinner-accent-color: #06b6d4;
+}
+
+.spinner-emerald {
+  --spinner-track-color: rgba(16, 185, 129, 0.15);
+  --spinner-accent-color: #10b981;
+}
+
+.spinner-rose {
+  --spinner-track-color: rgba(244, 63, 94, 0.15);
+  --spinner-accent-color: #f43f5e;
+}
+
+/* Biến thể Smooth Easing (co giãn tốc độ tự nhiên hơn linear) */
+.spinner-smooth {
+  animation: spin-smooth 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes spin-smooth {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   CONTAINER CĂN GIỮA VÀ LABEL
+   ========================================================================== */
+.loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.loading-text {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  animation: pulse-text 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
