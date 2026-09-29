@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Đào Nhựt Quang Minh</title>
     <link rel="stylesheet" href="profile.css">
+    <!-- Thư viện AOS CSS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <!-- PRELOADER -->
@@ -55,7 +57,7 @@
     <main class="main-content">
         
         <!-- Giới thiệu -->
-        <section class="card glass-effect" id="about">
+        <section class="card glass-effect" data-aos="fade-up" id="about">
             <div class="card-header">
                 <h3>Giới thiệu Bản Thân</h3>
                 <span class="badge">Xin chào 👋</span>
@@ -64,7 +66,7 @@
         </section>
 
         <!-- Kỹ năng -->
-        <section class="card glass-effect" id="skills">
+        <section class="card glass-effect" data-aos="fade-up" id="skills">
             <div class="card-header">
                 <h3>Kỹ Năng Chuyên Môn</h3>
             </div>
@@ -82,7 +84,7 @@
         </section>
 
         <!-- Dịch vụ -->
-        <section class="card glass-effect" id="services">
+        <section class="card glass-effect" data-aos="fade-up" id="services">
             <div class="card-header">
                 <h3>Dịch Vụ Cung Cấp</h3>
             </div>
@@ -115,7 +117,7 @@
         </section>
 
         <!-- Dự án -->
-        <section class="card glass-effect" id="projects">
+        <section class="card glass-effect" data-aos="fade-up" id="projects">
             <div class="card-header">
                 <h3>Dự Án Nổi Bật</h3>
             </div>
@@ -138,7 +140,7 @@
         </section>
 
         <!-- Liên hệ -->
-        <section class="card glass-effect" id="contact">
+        <section class="card glass-effect" data-aos="fade-up" id="contact">
             <div class="card-header">
                 <h3>Kết nối với tôi</h3>
             </div>
@@ -154,16 +156,30 @@
         </footer>
     </main>
 
+    <!-- Thư viện AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Khởi tạo thư viện AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800, // Thời gian hiệu ứng (ms)
+            once: true, // Chỉ chạy hiệu ứng 1 lần khi cuộn tới
+            offset: 100 // Khoảng cách từ dưới màn hình lên trước khi kích hoạt
+        });
+
         // Khi toàn bộ trang (bao gồm cả tài nguyên như ảnh) đã tải xong
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
-            // Thêm class fade-out để mờ dần
-            preloader.classList.add('fade-out');
-            // Ẩn hoàn toàn khỏi DOM sau khi hiệu ứng transition chạy xong
+            
+            // Giữ hiệu ứng loading thêm 0.8 giây (800ms) trước khi bắt đầu làm mờ
             setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500); 
+                // Thêm class fade-out để mờ dần (hiệu ứng kéo dài 0.5s cấu hình trong CSS)
+                preloader.classList.add('fade-out');
+                
+                // Ẩn hoàn toàn khỏi DOM sau khi hiệu ứng transition chạy xong
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500); 
+            }, 800);
         });
     </script>
 </body>

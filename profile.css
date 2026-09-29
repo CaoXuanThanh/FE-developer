@@ -1,4 +1,4 @@
-/* ==============================================================
+﻿/* ==============================================================
    1. BẢNG BIẾN TOÀN CỤC TẠI :ROOT (CSS VARIABLES SYSTEM)
    Bao gồm toàn bộ:
    - Hệ thống màu sắc: Chủ đạo, văn bản, nền, bề mặt, viền & hiệu ứng RGBA
@@ -428,6 +428,7 @@ button:hover,
 .btn-primary:hover {
     background: var(--primary-hover);
     /* Nâng button lên 3px khi hover */
+    /* TỐI ƯU HIỆU NĂNG: Dùng transform thay vì top/left để render qua GPU, không gây giật lag trên mobile */
     transform: translateY(-3px);
     /* Box-shadow đậm và lan tỏa rõ nét hơn */
     box-shadow: 0 8px 20px var(--color-primary-shadow-hover);
