@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Layout - Grid & Flexbox</title>
+
+    <!-- Thư viện AOS CSS qua CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <link rel="stylesheet" href="hd2.css">
 </head>
 <body>
@@ -25,8 +29,8 @@
             <h2>Giới thiệu bản thân</h2>
             <p>Xin chào! Mình là một lập trình viên đam mê thiết kế giao diện web, đặc biệt yêu thích việc sử dụng Grid và Flexbox để tối ưu hóa trải nghiệm người dùng.</p>
 
-            <!-- Khu vực Flexbox -->
-            <div class="skills-section">
+            <!-- Khu vực Flexbox (Thẻ section với thuộc tính data-aos) -->
+            <section class="skills-section" data-aos="fade-up" data-aos-duration="800">
                 <h3>Kỹ năng (Skills)</h3>
                 <div class="skills-list">
                     <div class="skill-item">HTML5</div>
@@ -36,30 +40,30 @@
                     <div class="skill-item">Figma</div>
                     <div class="skill-item">UI/UX Design</div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Khu vực Dịch vụ (CSS Grid & Media Queries) -->
-            <div class="services-section">
+            <!-- Khu vực Dịch vụ (Thẻ section với thuộc tính data-aos) -->
+            <section class="services-section" data-aos="fade-up" data-aos-duration="800" data-aos-offset="120">
                 <h3>Dịch vụ cung cấp (Services)</h3>
                 <div class="services-container">
-                    <div class="service-card">
+                    <div class="service-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
                         <h4>Thiết kế Web</h4>
                         <p>Giao diện hiện đại, chuẩn UI/UX và responsive mọi thiết bị.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
                         <h4>Front-end Dev</h4>
                         <p>Phát triển website với HTML5, CSS3, JavaScript và React.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300">
                         <h4>Tối ưu Hiệu năng</h4>
                         <p>Tăng tốc độ tải trang, chuẩn SEO và tối ưu trải nghiệm.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="400">
                         <h4>Bảo trì Hệ thống</h4>
                         <p>Hỗ trợ nâng cấp tính năng, sửa lỗi và cập nhật công nghệ.</p>
                     </div>
                 </div>
-            </div>
+            </section>
         </main>
 
         <footer class="footer">
@@ -67,6 +71,18 @@
         </footer>
 
     </div>
+
+    <!-- Thư viện AOS JavaScript qua CDN -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <!-- Khởi tạo AOS -->
+    <script>
+        AOS.init({
+            duration: 800,  // Thời gian chuyển động mặc định (800ms)
+            once: false,    // Chạy lại hiệu ứng mỗi lần cuộn trang qua lại
+            offset: 100     // Bắt đầu kích hoạt trước khi chạm đáy 100px
+        });
+    </script>
 
 </body>
 </html>

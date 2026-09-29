@@ -173,7 +173,7 @@ Tất cả các thành phần trực quan được quy chuẩn tại `:root` tro
 - [x] Xây dựng hệ thống CSS Variables chuẩn `:root`.
 - [x] Tối ưu hóa Responsive với Media Queries đa kích thước.
 - [ ] Tích hợp tính năng chuyển đổi Dark Mode / Light Mode.
-- [ ] Thêm Animation khi cuộn trang (AOS / Scroll-driven Animations).
+- [x] Thêm Animation khi cuộn trang (AOS / Scroll-driven Animations).
 - [ ] Kết nối Contact Form với dịch vụ gửi email tự động (EmailJS / Formspree).
 
 ---
