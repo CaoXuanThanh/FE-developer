@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio Animation Demo</title>
+
+    <!-- AOS CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #1f2937;
+        }
+
+        header {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           HOẠT ĐỘNG 2 - SPINNER
+        ========================== */
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+
+            border: 6px solid #cbd5e1;
+            border-top-color: #2563eb;
+
+            border-radius: 50%;
+
+            animation: spin 0.8s linear infinite;
+
+            margin-top: 30px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        section {
+            width: 80%;
+            max-width: 900px;
+
+            margin: 100px auto;
+            padding: 40px;
+
+            background-color: white;
+
+            border-radius: 12px;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .projects {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           HOẠT ĐỘNG 4
+           DÙNG TRANSFORM THAY TOP/LEFT
+        ========================== */
+
+        .card {
+            flex: 1;
+            min-width: 220px;
+
+            padding: 24px;
+
+            background-color: #e2e8f0;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s cubic-bezier(.25, .46, .45, .94),
+                box-shadow 0.3s cubic-bezier(.25, .46, .45, .94);
+        }
+
+        .card:hover {
+            transform: translate(5px, -10px);
+
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Portfolio của tôi</h1>
+
+        <p>Frontend Animation Demo</p>
+
+        <!-- Loading Spinner -->
+        <div class="spinner"></div>
+    </header>
+
+
+    <!-- HOẠT ĐỘNG 3 - AOS -->
+
+    <section data-aos="fade-up">
+        <h2>Giới thiệu</h2>
+
+        <p>
+            Tôi đang học Frontend Development và xây dựng
+            các giao diện có animation và trải nghiệm người dùng tốt hơn.
+        </p>
+    </section>
+
+
+    <section data-aos="fade-up">
+        <h2>Dự án</h2>
+
+        <div class="projects">
+
+            <div class="card">
+                <h3>Project 1</h3>
+                <p>Website Portfolio</p>
+            </div>
+
+            <div class="card">
+                <h3>Project 2</h3>
+                <p>Landing Page</p>
+            </div>
+
+            <div class="card">
+                <h3>Project 3</h3>
+                <p>Frontend API Demo</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section data-aos="fade-up">
+        <h2>Liên hệ</h2>
+
+        <p>Email: example@email.com</p>
+    </section>
+
+
+    <!-- AOS JavaScript -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js">
+    </script>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+
+</body>
+</html>
