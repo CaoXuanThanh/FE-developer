@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f4f6;
+}
+
+/* Vòng tròn loading */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e5e7eb;          /* Màu viền của các phần còn lại */
+  border-top-color: #3b82f6;          /* Màu viền trên khác biệt để tạo hiệu ứng quay */
+  border-radius: 50%;                 /* Tạo hình tròn */
+  animation: spin 1s linear infinite; /* Xoay 360 độ vô hạn */
+}
+
+/* Keyframes xoay 360 độ */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
