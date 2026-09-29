@@ -1,0 +1,624 @@
+﻿/* ==============================================================
+   1. BẢNG BIẾN TOÀN CỤC TẠI :ROOT (CSS VARIABLES SYSTEM)
+   Bao gồm toàn bộ:
+   - Hệ thống màu sắc: Chủ đạo, văn bản, nền, bề mặt, viền & hiệu ứng RGBA
+   - Hệ thống khoảng cách: Spacing (margin / padding / gap) từ 0 đến 32px
+   ============================================================== */
+:root {
+    /* ==================== A. HỆ THỐNG MÀU SẮC (COLORS) ==================== */
+    /* 1. Hai màu chủ đạo (Primary & Secondary) */
+    --primary-color: #b8860b;       /* Màu chủ đạo 1: Vàng đồng / Dark Goldenrod */
+    --secondary-color: #d4af37;     /* Màu chủ đạo 2: Vàng kim / Metallic Gold */
+    --primary-hover: #996515;       /* Sắc thái hover cho màu chính */
+    --secondary-hover: #aa8c2c;     /* Sắc thái hover cho màu phụ */
+
+    /* 2. Ba mức màu xám cho text (Text Grays) */
+    --text-primary: #1a1a1a;        /* Mức 1 (Đậm nhất): Tiêu đề H1-H4, Họ tên, nhãn chính */
+    --text-secondary: #4a4a4a;      /* Mức 2 (Vừa): Đoạn văn mô tả, nội dung thân bài, menu */
+    --text-muted: #737373;          /* Mức 3 (Nhạt): Địa điểm, placeholder, footer bản quyền */
+
+    /* 3. Màu nền, bề mặt và viền */
+    --bg-color: #f7f6f2;            /* Màu nền chính toàn trang (Off-white / Warm Gray) */
+    --surface: #ffffff;             /* Màu nền thẻ card / sidebar */
+    --border: #e6e2d3;              /* Màu đường viền card & input */
+
+    /* 4. Màu sắc phụ trợ & Trạng thái (Extracted Color Codes) */
+    --color-white: #ffffff;                         /* Màu trắng chuẩn (chữ nút bấm, badge, icon) */
+    --color-bg-subtle: #f1f5f9;                     /* Nền nhạt khi hover menu, icon mạng xã hội */
+    --color-glass: rgba(255, 255, 255, 0.7);        /* Nền hiệu ứng kính mờ (glassmorphism) */
+
+    /* 5. Mã màu RGBA cho hiệu ứng trong suốt, viền và đổ bóng */
+    --color-primary-subtle: rgba(184, 134, 11, 0.1);      /* Nền mờ 10% khi tab active */
+    --color-primary-glow: rgba(184, 134, 11, 0.15);       /* Viền phát sáng focus input */
+    --color-primary-shadow: rgba(184, 134, 11, 0.25);     /* Đổ bóng cho avatar */
+    --color-primary-shadow-hover: rgba(184, 134, 11, 0.3); /* Đổ bóng nút khi hover */
+
+    --color-badge-bg: rgba(212, 175, 55, 0.12);           /* Nền nhãn chào mừng */
+    --color-badge-border: rgba(212, 175, 55, 0.3);        /* Viền nhãn chào mừng */
+    --color-secondary-shadow: rgba(212, 175, 55, 0.15);   /* Đổ bóng card dự án & dịch vụ khi hover */
+
+    --color-shadow-base: rgba(0, 0, 0, 0.05);             /* Màu bóng mờ tiêu chuẩn */
+    --color-shadow-dark: rgba(0, 0, 0, 0.08);             /* Màu bóng mờ đậm */
+
+    /* Đổ bóng cấu trúc */
+    --shadow-sm: 0 1px 3px var(--color-shadow-base);
+    --shadow-md: 0 4px 20px -2px var(--color-shadow-base);
+    --shadow-lg: 0 10px 25px -5px var(--color-shadow-dark);
+    --radius: 16px;
+
+    /* Biến tương thích ngược (aliases) */
+    --primary: var(--primary-color);
+    --secondary: var(--secondary-color);
+    --text-main: var(--text-primary);
+
+    /* ==================== B. HỆ THỐNG KHOẢNG CÁCH (SPACING SYSTEM) ==================== */
+    /* Trích xuất toàn bộ thông số margin, padding, gap */
+    --spacing-0: 0;                 /* 0px - Reset */
+    --spacing-4: 4px;               /* 4px - Khoảng cách siêu nhỏ (margin text/subtitle) */
+    --spacing-8: 8px;               /* 8px - Khoảng cách nhỏ (gap menu, margin title) */
+    --spacing-10: 10px;             /* 10px - Khoảng cách vừa nhỏ (margin-top containers, padding badge) */
+    --spacing-12: 12px;             /* 12px - Khoảng cách vừa (gap icons, margin icons) */
+    --spacing-14: 14px;             /* 14px - Padding nút mobile */
+    --spacing-16: 16px;             /* 16px - Khoảng cách chuẩn (padding mobile, margin chuẩn) */
+    --spacing-18: 18px;             /* 18px - Padding ngang skill pill */
+    --spacing-20: 20px;             /* 20px - Khoảng cách trung bình (gap grid, padding card/service) */
+    --spacing-24: 24px;             /* 24px - Khoảng cách lớn (padding desktop, gap layout) */
+    --spacing-28: 28px;             /* 28px - Margin bottom location */
+    --spacing-30: 30px;             /* 30px - Gap desktop, margin-bottom menu */
+    --spacing-32: 32px;             /* 32px - Padding card desktop, sidebar */
+}
+
+* { margin: var(--spacing-0); padding: var(--spacing-0); box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);           /* Áp dụng 1 màu nền chính */
+    color: var(--text-primary);                  /* Áp dụng Text mức 1 (mặc định) */
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-template-areas: "sidebar main";
+    min-height: 100vh;
+    padding: var(--spacing-24);
+    gap: var(--spacing-30);
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    grid-area: sidebar;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--spacing-32) var(--spacing-24);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    position: sticky;
+    top: var(--spacing-24);
+    box-shadow: var(--shadow-sm);
+}
+
+.avatar {
+    width: 88px;
+    height: 88px;
+    /* Áp dụng 2 màu chủ đạo: Primary và Secondary kết hợp gradient */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--color-white);
+    font-size: 28px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-16);
+    box-shadow: 0 8px 16px var(--color-primary-shadow);
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);                  /* Text mức 1: Tiêu đề Họ tên */
+    margin-bottom: var(--spacing-4);
+    text-align: center;
+}
+
+.role {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);                 /* Màu chủ đạo 1 (Primary) */
+    margin-bottom: var(--spacing-4);
+}
+
+.location {
+    font-size: 13px;
+    color: var(--text-muted);                    /* Text mức 3: Thông tin phụ (nhạt) */
+    margin-bottom: var(--spacing-28);
+}
+
+.nav-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+    margin-bottom: var(--spacing-30);
+}
+
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-12);
+    padding: var(--spacing-12) var(--spacing-16);
+    color: var(--text-secondary);                /* Text mức 2: Nội dung liên kết menu */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.nav-menu a svg {
+    width: 18px;
+    height: 18px;
+}
+
+.nav-menu a:hover {
+    background-color: var(--color-bg-subtle);
+    color: var(--primary-color);                 /* Màu chủ đạo 1 khi hover menu */
+}
+
+.nav-menu a.active {
+    background-color: var(--color-primary-subtle);
+    color: var(--primary-color);                 /* Màu chủ đạo 1 cho mục active */
+    font-weight: 600;
+    border-left: 3px solid var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-12);
+    margin-top: auto;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--color-bg-subtle);
+    color: var(--text-secondary);                /* Text mức 2: Icon liên kết */
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.social-links a:hover {
+    background: var(--primary-color);            /* Màu chủ đạo 1 khi hover */
+    color: var(--color-white);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* ================= MAIN CONTENT ================= */
+.main-content {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-24);
+    max-width: 900px;
+}
+
+.glass-effect {
+    background: var(--color-glass);
+    backdrop-filter: blur(10px);
+}
+
+.card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--spacing-32);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary-color);        /* Màu chủ đạo 2 (Secondary) khi hover card */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-16);
+}
+
+.card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);                  /* Text mức 1: Tiêu đề mục (Đậm) */
+}
+
+.badge {
+    /* Áp dụng Màu chủ đạo 2 (Secondary) làm điểm nhấn chào đón */
+    background: var(--color-badge-bg);
+    color: var(--secondary-color);
+    border: 1px solid var(--color-badge-border);
+    padding: var(--spacing-4) var(--spacing-10);
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.desc-text {
+    font-size: 15px;
+    color: var(--text-secondary);                /* Text mức 2: Nội dung mô tả giới thiệu */
+    line-height: 1.7;
+}
+
+/* ================= SKILLS ================= */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-12);
+    margin-top: var(--spacing-10);
+}
+
+.skill-pill {
+    background-color: var(--surface);
+    color: var(--text-secondary);                /* Text mức 2: Tên kỹ năng thông thường */
+    border: 1px solid var(--border);
+    padding: var(--spacing-8) var(--spacing-18);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: default;
+    box-shadow: var(--shadow-sm);
+}
+
+.skill-pill:hover {
+    background-color: var(--primary-color);      /* Màu chủ đạo 1 (Primary) khi hover kỹ năng */
+    color: var(--color-white);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* ================= SERVICES ================= */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);       /* Màn hình > 1024px: 4 cột */
+    gap: var(--spacing-20);                      /* Khoảng cách giữa các cột/hàng: 20px */
+    margin-top: var(--spacing-10);
+}
+
+.service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: var(--spacing-20);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.2s ease;
+}
+
+.service-card:hover {
+    border-color: var(--secondary-color);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px var(--color-secondary-shadow);
+}
+
+.service-icon {
+    font-size: 28px;
+    margin-bottom: var(--spacing-12);
+}
+
+.service-card h4 {
+    font-size: 16px;
+    margin-bottom: var(--spacing-8);
+    color: var(--text-primary);
+}
+
+.service-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ================= PROJECTS GRID ================= */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-20);
+    margin-top: var(--spacing-10);
+}
+
+.project-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: var(--spacing-20);
+    transition: all 0.2s ease;
+}
+
+.project-item:hover {
+    border-color: var(--secondary-color);        /* Màu chủ đạo 2 (Secondary) tạo điểm nhấn viền dự án */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px var(--color-secondary-shadow);
+}
+
+.project-icon {
+    font-size: 28px;
+    margin-bottom: var(--spacing-12);
+}
+
+.project-item h4 {
+    font-size: 16px;
+    margin-bottom: var(--spacing-8);
+    color: var(--text-primary);                  /* Text mức 1: Tên dự án (Đậm) */
+}
+
+.project-item p {
+    font-size: 13px;
+    color: var(--text-secondary);                /* Text mức 2: Mô tả ngắn gọn dự án */
+    margin-bottom: var(--spacing-16);
+    line-height: 1.5;
+}
+
+.btn-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--secondary-color);               /* Màu chủ đạo 2 (Secondary) cho link chi tiết */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.btn-link:hover {
+    color: var(--primary-color);                 /* Màu chủ đạo 1 (Primary) khi hover liên kết */
+    text-decoration: underline;
+}
+
+/* ================= CONTACT FORM ================= */
+.contact-form {
+    display: flex;
+    gap: var(--spacing-12);
+}
+
+.form-input {
+    flex: 1;
+    padding: var(--spacing-12) var(--spacing-16);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text-primary);                  /* Text mức 1: Chữ người dùng nhập */
+    background-color: var(--surface);
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);                    /* Text mức 3: Chữ giữ chỗ placeholder (Nhạt) */
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);          /* Màu chủ đạo 1 (Primary) khi focus ô nhập */
+    box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+button,
+.btn-primary {
+    background: var(--primary-color);            /* Màu chủ đạo 1 (Primary) cho nút gửi */
+    color: var(--color-white);
+    border: none;
+    padding: var(--spacing-0) var(--spacing-20);
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px var(--color-primary-shadow);
+    /* Transition với cubic-bezier giúp chuyển động mượt mà và tự nhiên */
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background-color 0.2s ease;
+}
+
+button:hover,
+.btn-primary:hover {
+    background: var(--primary-hover);
+    /* Nâng button lên 3px khi hover */
+    /* TỐI ƯU HIỆU NĂNG: Dùng transform thay vì top/left để render qua GPU, không gây giật lag trên mobile */
+    transform: translateY(-3px);
+    /* Box-shadow đậm và lan tỏa rõ nét hơn */
+    box-shadow: 0 8px 20px var(--color-primary-shadow-hover);
+}
+
+button:active,
+.btn-primary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px var(--color-primary-shadow-hover);
+}
+
+/* ================= FOOTER ================= */
+.main-footer {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);                    /* Text mức 3: Bản quyền chân trang (Nhạt) */
+    padding: var(--spacing-20) var(--spacing-0);
+    line-height: 1.6;
+}
+
+/* ==============================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   Tối ưu hóa giao diện cho màn hình < 768px (Tablet & Mobile)
+   - Chuyển CSS Grid từ 2 cột (sidebar / main) thành 1 cột duy nhất (1fr).
+   - Chuyển Sidebar lên đầu trang (hoặc có tùy chọn ẩn).
+   - Tối ưu nav-menu ngang, card padding, danh sách dự án và form liên hệ.
+   ============================================================== */
+@media (max-width: 768px) {
+    /* 1. Chuyển CSS Grid 2 cột thành 1 cột duy nhất */
+    body {
+        grid-template-columns: 1fr;              /* 1 cột duy nhất chiếm toàn bộ chiều rộng */
+        grid-template-areas: 
+            "sidebar"
+            "main";                              /* Chuyển sidebar lên đầu trang, main content ở phía dưới */
+        padding: var(--spacing-16);
+        gap: var(--spacing-20);
+    }
+
+    /* 2. Tối ưu Sidebar khi hiển thị ở đầu trang */
+    .sidebar {
+        grid-area: sidebar;
+        position: static;                        /* Bỏ sticky cố định khi ở giao diện mobile */
+        top: 0;
+        width: 100%;
+        padding: var(--spacing-24) var(--spacing-16);
+        box-shadow: var(--shadow-sm);
+
+        /* 
+           GHI CHÚ: Nếu muốn ẨN HOÀN TOÀN sidebar trên màn hình < 768px 
+           thay vì chuyển lên đầu trang, chỉ cần bỏ comment dòng bên dưới:
+           display: none;
+        */
+    }
+
+    .avatar {
+        width: 76px;
+        height: 76px;
+        font-size: 24px;
+        margin-bottom: var(--spacing-12);
+    }
+
+    .location {
+        margin-bottom: var(--spacing-20);
+    }
+
+    /* Chuyển menu điều hướng thành dạng ngang (horizontal bar) gọn gàng */
+    .nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-8);
+        margin-bottom: var(--spacing-20);
+    }
+
+    .nav-menu a {
+        padding: var(--spacing-8) var(--spacing-14);
+        font-size: 13px;
+        border-radius: 8px;
+    }
+
+    .nav-menu a.active {
+        border-left: none;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-top: var(--spacing-0);
+    }
+
+    /* 3. Tối ưu Main Content trên thiết bị di động */
+    .main-content {
+        max-width: 100%;
+        gap: var(--spacing-16);
+    }
+
+    .card {
+        padding: var(--spacing-20) var(--spacing-16);    /* Giảm padding để nội dung rộng rãi hơn trên màn hình nhỏ */
+    }
+
+    .card-header h3 {
+        font-size: 18px;
+    }
+
+    /* 4. Dự án hiển thị 1 cột duy nhất */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 5. Dịch vụ hiển thị 1 cột trên thiết bị nhỏ (< 768px) */
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-20);
+    }
+
+    /* 6. Form liên hệ chuyển sang dạng cột dọc tiện thao tác cảm ứng */
+    .contact-form {
+        flex-direction: column;
+    }
+
+    .form-input {
+        width: 100%;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: var(--spacing-12) var(--spacing-20);
+    }
+}
+
+/* ==============================================================
+   MEDIA QUERIES CHO CLASS .services-container
+   Yêu cầu:
+   - Màn hình > 1024px: 4 cột (mặc định tại .services-container)
+   - Màn hình 768px - 1024px: 2 cột (gap: 20px)
+   - Màn hình < 768px: 1 cột (gap: 20px)
+   ============================================================== */
+
+/* Màn hình từ 768px đến 1024px: 2 cột */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);   /* 768px - 1024px: 2 cột */
+        gap: var(--spacing-20);
+    }
+}
+
+/* Màn hình < 768px: 1 cột */
+@media (max-width: 767.98px) {
+    .services-container {
+        grid-template-columns: 1fr;              /* < 768px: 1 cột duy nhất */
+        gap: var(--spacing-20);
+    }
+}
+
+/* ================= LOADING SPINNER ================= */
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ================= PRELOADER OVERLAY ================= */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}

@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Gửi Tin Nhắn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Màn hình Loading -->
+    <div id="loading">
+        <div class="loader"></div>
+        <p>Đang tải...</p>
+    </div>
+
+    <!-- Nội dung chính -->
+    <div id="content">
+
+        <button class="my-button">
+            <span class="text-normal">Gửi tin nhắn</span>
+            <span class="text-hover">Gửi tin nhắn</span>
+        </button>
+
+    </div>
+
+    <script>
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                document.getElementById("loading").classList.add("hidden");
+                document.getElementById("content").classList.add("show");
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
+
