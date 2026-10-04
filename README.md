@@ -1,23 +1,25 @@
-# School Camera Access Platform — FE Prototype
+# School Camera Access Platform — FE final project
 
-Bài cuối kỳ HTML + CSS của nhóm 5 sinh viên. Đây là **frontend prototype**, không phải hệ thống camera thật: không backend, database, API, đăng nhập hay streaming thật. Hiện chỉ có khung chung và TODO để từng thành viên tự làm phần được giao.
+Bài cuối kỳ của nhóm 5 sinh viên, dùng **HTML + CSS + JavaScript thuần**. Đây là frontend demo, chưa có backend hay camera thật. Hiện chỉ có khung chung, mock data và TODO để từng thành viên tự làm feature.
 
 Đọc [kiến trúc và ownership](docs/ARCHITECTURE.md), [quy ước UI](docs/UI_CONTRACT.md) và [checklist QA](docs/QA_CHECKLIST.md) trước khi code, kể cả khi dùng AI.
 
 ## Chạy tại máy
 
-Mở terminal tại thư mục repository:
+Dùng **VS Code Live Server** để mở `index.html`, hoặc chạy HTTP server tại thư mục repository nếu có Python:
 
 ```sh
 python -m http.server 8000
 ```
 
-Mở một trong bốn URL:
+Với server ở port 8000, mở một trong bốn URL:
 
 - Login: <http://localhost:8000/index.html>
 - Parent Dashboard: <http://localhost:8000/pages/parent-dashboard.html>
 - Camera Viewer: <http://localhost:8000/pages/camera-viewer.html?id=cam01>
 - Admin Access: <http://localhost:8000/pages/admin-access.html>
+
+Nên dùng HTTP/Live Server; không khuyến khích mở bằng `file://` vì các trang dùng ES Modules.
 
 ## Cấu trúc
 
@@ -38,6 +40,13 @@ FE-developer/
 │   │       ├── parent-dashboard.css
 │   │       ├── camera-viewer.css
 │   │       └── admin-access.css
+│   ├── js/
+│   │   ├── mock-data.js
+│   │   └── pages/
+│   │       ├── login.js
+│   │       ├── parent-dashboard.js
+│   │       ├── camera-viewer.js
+│   │       └── admin-access.js
 │   └── images/.gitkeep
 ├── docs/
 │   ├── ARCHITECTURE.md
@@ -61,10 +70,10 @@ Các branch dự kiến:
 | Đạt | `camera/dat-qa` |
 
 1. Kiểm tra working tree sạch, chuyển sang `main` và cập nhật: `git switch main`, `git pull --ff-only origin main`.
-2. Tạo branch mới từ `main`: `git switch -c camera/<branch-duoc-giao>` (thay bằng tên đầy đủ trong bảng).
+2. Tạo branch mới từ `main`: `git switch -c camera/tuan-parent-dashboard` (ví dụ cho Tuấn; các bạn thay bằng branch của mình trong bảng).
 3. Chỉ sửa file được giao và giữ nguyên shared shell khi chưa được Thành duyệt.
 4. Kiểm tra thay đổi, stage đúng file và commit.
-5. Push branch: `git push -u origin <branch-duoc-giao>`.
+5. Push branch: `git push -u origin camera/tuan-parent-dashboard` (thay bằng branch của mình).
 6. Mở Pull Request về `main`; Thành review và tích hợp.
 
-**Không push thẳng `main`, không sửa file người khác, không force-push.** Lần dựng khung ban đầu này là ngoại lệ được chủ repository cho phép trên `main`; các công việc tiếp theo phải đi qua branch và PR. Không sửa, xóa, merge hoặc rebase các branch cá nhân cũ để làm project này. `archive/game.html` lưu nguyên bài cũ, không thuộc bốn màn hình camera.
+**Không push thẳng `main`, không sửa file người khác, không force-push.** Bước dựng/hoàn thiện skeleton chung là ngoại lệ được chủ repository cho phép trên `main`; công việc feature phải đi qua branch và PR. Không sửa, xóa, merge hoặc rebase branch cá nhân cũ. `archive/game.html` lưu nguyên bài cũ, không thuộc bốn màn hình camera.

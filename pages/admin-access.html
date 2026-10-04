@@ -14,18 +14,16 @@
   <header class="site-header">
     <div class="container">
       <p class="site-title">School Camera Access</p>
-      <nav class="site-nav" aria-label="Điều hướng prototype">
-        <a href="../index.html">Login</a>
-        <a href="parent-dashboard.html">Parent Dashboard</a>
-        <a href="camera-viewer.html?id=cam01">Camera Viewer</a>
-        <a href="admin-access.html" aria-current="page">Admin Access</a>
+      <nav class="site-nav" aria-label="Điều hướng quản trị">
+        <a href="admin-access.html" aria-current="page">Admin</a>
+        <a href="../index.html">Đăng xuất</a>
       </nav>
     </div>
   </header>
 
   <main class="container page-shell">
     <!-- PAGE CONTENT START -->
-    <section aria-labelledby="page-title">
+    <section id="admin-access-root" aria-labelledby="page-title">
       <h1 id="page-title">Admin Access</h1>
       <!-- TODO: Thành triển khai nội dung Admin Access theo docs/UI_CONTRACT.md. -->
       <p class="muted">TODO — Thành: xây dựng giao diện quản lý quyền truy cập.</p>
@@ -37,5 +35,6 @@
   <footer class="site-footer">
     <div class="container">School Camera Access — FE Prototype</div>
   </footer>
+  <script type="module" src="../assets/js/pages/admin-access.js"></script>
 </body>
 </html>

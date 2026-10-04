@@ -14,18 +14,16 @@
   <header class="site-header">
     <div class="container">
       <p class="site-title">School Camera Access</p>
-      <nav class="site-nav" aria-label="Điều hướng prototype">
-        <a href="../index.html">Login</a>
-        <a href="parent-dashboard.html">Parent Dashboard</a>
-        <a href="camera-viewer.html?id=cam01" aria-current="page">Camera Viewer</a>
-        <a href="admin-access.html">Admin Access</a>
+      <nav class="site-nav" aria-label="Điều hướng phụ huynh">
+        <a href="parent-dashboard.html">Về Dashboard</a>
+        <a href="../index.html">Đăng xuất</a>
       </nav>
     </div>
   </header>
 
   <main class="container page-shell">
     <!-- PAGE CONTENT START -->
-    <section aria-labelledby="page-title">
+    <section id="camera-viewer-root" aria-labelledby="page-title">
       <h1 id="page-title">Camera Viewer</h1>
       <!-- TODO: Thiện triển khai nội dung viewer theo docs/UI_CONTRACT.md. -->
       <p class="muted">TODO — Thiện: xây dựng giao diện xem camera minh họa.</p>
@@ -37,5 +35,6 @@
   <footer class="site-footer">
     <div class="container">School Camera Access — FE Prototype</div>
   </footer>
+  <script type="module" src="../assets/js/pages/camera-viewer.js"></script>
 </body>
 </html>

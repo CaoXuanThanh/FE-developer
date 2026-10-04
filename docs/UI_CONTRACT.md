@@ -1,6 +1,6 @@
 # Hợp đồng UI
 
-Áp dụng cho cả bốn màn hình. Owner dùng token/class chung, tự viết nội dung trang trong vùng marker và chỉ thêm CSS riêng cho trang được giao.
+Áp dụng cho cả bốn màn hình HTML + CSS + JavaScript thuần. Owner dùng cùng hệ visual; không cần mọi trang pixel-perfect giống nhau. Nội dung nằm trong vùng marker, CSS/JS riêng thuộc trang được giao.
 
 ## Visual contract
 
@@ -41,33 +41,45 @@ Các trang load CSS theo thứ tự: `global.css`, `layout.css`, CSS riêng, `qa
 
 ## Navigation contract
 
-Dùng link HTML với đường dẫn tương đối; không xử lý điều hướng bằng JavaScript.
+Navigation hiện tại chỉ theo ngữ cảnh của trang, dùng đường dẫn tương đối:
 
-| Từ trang | Đích | `href` |
-| --- | --- | --- |
-| Login (`index.html`) | Parent Dashboard | `pages/parent-dashboard.html` |
-| Parent Dashboard | Camera Viewer | `camera-viewer.html?id=cam01` |
-| Camera Viewer | Parent Dashboard | `parent-dashboard.html` |
-| Admin Access | Back to Login/Home | `../index.html` |
+| Trang | Link trong shell |
+| --- | --- |
+| Login | Chỉ brand/title; không có menu tới Dashboard, Viewer hoặc Admin |
+| Parent Dashboard | `Dashboard` → `parent-dashboard.html` (`aria-current="page"`); `Đăng xuất` → `../index.html` |
+| Camera Viewer | `Về Dashboard` → `parent-dashboard.html`; `Đăng xuất` → `../index.html` |
+| Admin Access | `Admin` → `admin-access.html` (`aria-current="page"`); `Đăng xuất` → `../index.html` |
 
-`?id=cam01` chỉ minh họa một camera; HTML/CSS không đọc query string. Shell có navigation tối thiểu đến đủ bốn trang để kiểm tra liên kết. Từ root dùng `pages/...`; từ trang trong `pages/` dùng tên file cùng thư mục hoặc `../index.html` về Login. Không dùng đường dẫn tuyệt đối theo ổ đĩa máy cá nhân.
+`Đăng xuất` hiện chỉ là link placeholder về Login, chưa có session/auth logic. Không thêm menu debug đi thẳng cả bốn màn hình.
 
-## Mock content contract
+Luồng dưới đây là **TODO cho feature sau này**, chưa hoạt động trong skeleton:
 
-Owner hard-code các giá trị thống nhất sau khi làm giao diện. Khung ban đầu chỉ có TODO, chưa cần trình bày dữ liệu. Không tạo data file, JavaScript, fake API hoặc localStorage.
+- Login → `pages/parent-dashboard.html` hoặc `pages/admin-access.html` khi QMinh làm phần của mình.
+- Dashboard → `camera-viewer.html?id=<cameraId>` khi Tuấn tạo link camera, ví dụ `?id=cam01`.
+- Module Viewer hiện chưa đọc query string; Thiện sẽ làm trong feature riêng.
+
+Từ root dùng `pages/...`; từ trang trong `pages/` dùng tên file cùng thư mục hoặc `../index.html` về Login. Không dùng đường dẫn theo ổ đĩa máy cá nhân.
+
+## Mock data và module contract
+
+Dữ liệu demo dùng chung nằm ở **`assets/js/mock-data.js`**, export một object `demoData` đơn giản gồm `parent`, `student`, `cameras`. Mỗi page module có thể dùng `import { demoData } from "../mock-data.js";`. Không tạo bản sao dữ liệu business trong HTML/page JS/file riêng; nếu cần thêm field, báo Thành cập nhật shared file.
 
 | Field | Giá trị mẫu |
 | --- | --- |
-| Student | Nguyễn Minh An |
-| Student ID | HS20260123 |
-| Class | 3A |
-| Status | Đang học |
-| Parent | Nguyễn Văn Bình |
-| Camera 1 | Lớp 3A — Online |
-| Camera 2 | Sân chơi — Online |
-| Camera không được phép (ví dụ) | Lớp 3B |
+| `demoData.parent.name` | Nguyễn Văn Bình |
+| `demoData.student.id` | HS20260123 |
+| `demoData.student.name` | Nguyễn Minh An |
+| `demoData.student.className` | 3A |
+| `demoData.student.status` | Đang học |
+| `demoData.cameras[0]` | `id: "cam01"`, `name: "Lớp 3A"`, `status: "Online"`, `allowed: true` |
+| `demoData.cameras[1]` | `id: "cam02"`, `name: "Sân chơi"`, `status: "Online"`, `allowed: true` |
+| `demoData.cameras[2]` | `id: "cam03"`, `name: "Lớp 3B"`, `status: "Online"`, `allowed: false` |
 
-Các trạng thái và quyền truy cập chỉ là nội dung mô phỏng; không có bảo mật/kiểm tra quyền thật.
+`allowed` và trạng thái chỉ là dữ liệu mô phỏng. Skeleton không có permission engine, auth, API, localStorage hoặc service/store. Module hiện chỉ import/demo log và TODO, chưa render giao diện hay làm feature.
+
+Mỗi trang load module riêng ở cuối `body` bằng `type="module"`: Login dùng `assets/js/pages/login.js`; các trang trong `pages/` dùng `../assets/js/pages/<ten-trang>.js`. Không inline JS. Chạy qua Live Server/HTTP, không dùng `file://` để kiểm thử module.
+
+Giữ root `login-root`, `parent-dashboard-root`, `camera-viewer-root`, `admin-access-root` theo trang và `h1#page-title`; không đổi marker, CSS load order hoặc cấu trúc thư mục.
 
 ## Responsive và truy cập cơ bản
 

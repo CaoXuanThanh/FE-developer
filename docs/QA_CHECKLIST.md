@@ -1,51 +1,69 @@
-# Mẫu kiểm thử QA
+# Mẫu kiểm thử skeleton và FE cơ bản
 
-Đạt điền kết quả sau khi kiểm thử thực tế. `—` nghĩa là chưa chạy, không phải PASS. Mỗi hàng ghi `PASS` hoặc `FAIL`; khi FAIL, ghi Bug ID và mô tả ở danh sách bug bên dưới. Ghi ngày, người kiểm thử và browser/phiên bản vào Notes khi bắt đầu một lượt.
+Đạt điền kết quả sau khi kiểm thử thực tế. `—` nghĩa là chưa chạy, không phải PASS. Mỗi hàng ghi `PASS` hoặc `FAIL`; khi FAIL, ghi Bug ID và mô tả bên dưới. Ghi ngày, người kiểm thử và browser/phiên bản vào Notes khi bắt đầu một lượt.
 
-Chạy local server tại root (`python -m http.server 8000`). Viewport là kích thước vùng hiển thị nội dung của browser, không phải kích thước cả cửa sổ. Bốn trang phải được kiểm tra ở cả desktop **1366 × 768** và mobile **390 × 844**. Có thể copy bảng cho lượt kiểm thử mới.
+Chạy bằng VS Code Live Server hoặc HTTP server tại root; nếu có Python: `python -m http.server 8000`. Không kiểm thử ES Modules qua `file://`. Viewport là vùng hiển thị nội dung browser. Kiểm tra cả bốn trang ở desktop **1366 × 768** và mobile **390 × 844**; có thể copy bảng cho lượt mới.
+
+Checklist này chỉ kiểm tra skeleton và FE cơ bản. Login/render camera/search và các test chức năng khác sẽ bổ sung khi owner hoàn thiện feature. Không đánh PASS cho runtime/rendering nếu chưa chạy browser/server. Log demo từ module không phải console error.
 
 | Page | Viewport | Test item | PASS/FAIL | Bug ID | Notes |
 | --- | --- | --- | --- | --- | --- |
-| Login — `index.html` | 1366 × 768 | CSS load: đủ global, layout, login, qa-fixes theo đúng thứ tự; không 404 | — | | |
-| Login — `index.html` | 1366 × 768 | Relative links: đi Dashboard và các link shell đúng trang, không 404 | — | | |
-| Login — `index.html` | 1366 × 768 | Overflow: không cuộn ngang ngoài ý muốn, nội dung không bị cắt | — | | |
-| Login — `index.html` | 1366 × 768 | Readable text: tiêu đề, TODO/nội dung, navigation và footer dễ đọc | — | | |
-| Login — `index.html` | 1366 × 768 | Button/link: click được, nhãn rõ, không bị lớp khác che | — | | |
-| Login — `index.html` | 390 × 844 | CSS load: đủ global, layout, login, qa-fixes theo đúng thứ tự; không 404 | — | | |
-| Login — `index.html` | 390 × 844 | Relative links: đi Dashboard và các link shell đúng trang, không 404 | — | | |
-| Login — `index.html` | 390 × 844 | Overflow: không cuộn ngang ngoài ý muốn, nội dung không bị cắt | — | | |
-| Login — `index.html` | 390 × 844 | Readable text: tiêu đề, TODO/nội dung, navigation và footer dễ đọc | — | | |
-| Login — `index.html` | 390 × 844 | Button/link: click được, nhãn rõ, không bị lớp khác che | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | CSS load: đủ global, layout, parent-dashboard, qa-fixes theo đúng thứ tự; không 404 | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Relative links: Viewer có `?id=cam01`; các link shell đúng trang, không 404 | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Overflow: không cuộn ngang ngoài ý muốn, nội dung không bị cắt | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Readable text: tiêu đề, TODO/nội dung, navigation và footer dễ đọc | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Button/link: click được, nhãn rõ, không bị lớp khác che | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | CSS load: đủ global, layout, parent-dashboard, qa-fixes theo đúng thứ tự; không 404 | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Relative links: Viewer có `?id=cam01`; các link shell đúng trang, không 404 | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Overflow: không cuộn ngang ngoài ý muốn, nội dung không bị cắt | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Readable text: tiêu đề, TODO/nội dung, navigation và footer dễ đọc | — | | |
-| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Button/link: click được, nhãn rõ, không bị lớp khác che | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | CSS load: đủ global, layout, camera-viewer, qa-fixes theo đúng thứ tự; không 404 | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Relative links: về Dashboard và các link shell đúng trang, không 404 | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Overflow: không cuộn ngang ngoài ý muốn, nội dung không bị cắt | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Readable text: tiêu đề, TODO/nội dung, navigation và footer dễ đọc | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Button/link: click được, nhãn rõ, không bị lớp khác che | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | CSS load: đủ global, layout, camera-viewer, qa-fixes theo đúng thứ tự; không 404 | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Relative links: về Dashboard và các link shell đúng trang, không 404 | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Overflow: không cuộn ngang ngoài ý muốn, nội dung không bị cắt | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Readable text: tiêu đề, TODO/nội dung, navigation và footer dễ đọc | — | | |
-| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Button/link: click được, nhãn rõ, không bị lớp khác che | — | | |
-| Admin Access — `pages/admin-access.html` | 1366 × 768 | CSS load: đủ global, layout, admin-access, qa-fixes theo đúng thứ tự; không 404 | — | | |
-| Admin Access — `pages/admin-access.html` | 1366 × 768 | Relative links: Back to Login/Home và các link shell đúng trang, không 404 | — | | |
-| Admin Access — `pages/admin-access.html` | 1366 × 768 | Overflow: không cuộn ngang ngoài ý muốn, nội dung không bị cắt | — | | |
-| Admin Access — `pages/admin-access.html` | 1366 × 768 | Readable text: tiêu đề, TODO/nội dung, navigation và footer dễ đọc | — | | |
-| Admin Access — `pages/admin-access.html` | 1366 × 768 | Button/link: click được, nhãn rõ, không bị lớp khác che | — | | |
-| Admin Access — `pages/admin-access.html` | 390 × 844 | CSS load: đủ global, layout, admin-access, qa-fixes theo đúng thứ tự; không 404 | — | | |
-| Admin Access — `pages/admin-access.html` | 390 × 844 | Relative links: Back to Login/Home và các link shell đúng trang, không 404 | — | | |
-| Admin Access — `pages/admin-access.html` | 390 × 844 | Overflow: không cuộn ngang ngoài ý muốn, nội dung không bị cắt | — | | |
-| Admin Access — `pages/admin-access.html` | 390 × 844 | Readable text: tiêu đề, TODO/nội dung, navigation và footer dễ đọc | — | | |
-| Admin Access — `pages/admin-access.html` | 390 × 844 | Button/link: click được, nhãn rõ, không bị lớp khác che | — | | |
+| Login — `index.html` | 1366 × 768 | CSS load: đủ global, layout, login, qa-fixes đúng thứ tự và đúng relative path; không 404 | — | | |
+| Login — `index.html` | 1366 × 768 | Module load: login.js load được qua HTTP, không 404 | — | | |
+| Login — `index.html` | 1366 × 768 | Console: không syntax/import/runtime error do skeleton; demo log được phép | — | | |
+| Login — `index.html` | 1366 × 768 | Navigation: chỉ brand/title; không có menu Dashboard/Viewer/Admin | — | | |
+| Login — `index.html` | 1366 × 768 | Overflow: không horizontal scroll ngoài ý muốn, nội dung không bị cắt | — | | |
+| Login — `index.html` | 1366 × 768 | Semantic/readability: cấu trúc header/main/section/footer đúng, heading/TODO dễ đọc, tiếng Việt không lỗi font | — | | |
+| Login — `index.html` | 1366 × 768 | Click/focus: link/nút hiện có click được, nhãn và focus rõ; nếu chưa có control, ghi N/A trong Notes | — | | |
+| Login — `index.html` | 390 × 844 | CSS load: đủ global, layout, login, qa-fixes đúng thứ tự và đúng relative path; không 404 | — | | |
+| Login — `index.html` | 390 × 844 | Module load: login.js load được qua HTTP, không 404 | — | | |
+| Login — `index.html` | 390 × 844 | Console: không syntax/import/runtime error do skeleton; demo log được phép | — | | |
+| Login — `index.html` | 390 × 844 | Navigation: chỉ brand/title; không có menu Dashboard/Viewer/Admin | — | | |
+| Login — `index.html` | 390 × 844 | Overflow: không horizontal scroll ngoài ý muốn, nội dung không bị cắt | — | | |
+| Login — `index.html` | 390 × 844 | Semantic/readability: cấu trúc header/main/section/footer đúng, heading/TODO dễ đọc, tiếng Việt không lỗi font | — | | |
+| Login — `index.html` | 390 × 844 | Click/focus: link/nút hiện có click được, nhãn và focus rõ; nếu chưa có control, ghi N/A trong Notes | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | CSS load: đủ global, layout, parent-dashboard, qa-fixes đúng thứ tự và đúng relative path; không 404 | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Module load: parent-dashboard.js và dependency mock-data.js load/import được qua HTTP, không 404 | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Console: không syntax/import/runtime error do skeleton; demo log được phép | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Relative navigation: Dashboard → parent-dashboard.html, Đăng xuất → ../index.html; aria-current đúng; không 404 | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Overflow: không horizontal scroll ngoài ý muốn, nội dung không bị cắt | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Semantic/readability: cấu trúc header/main/section/footer đúng, heading/TODO dễ đọc, tiếng Việt không lỗi font | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 1366 × 768 | Click/focus: link/nút hiện có click được, nhãn và focus rõ; nếu chưa có control, ghi N/A trong Notes | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | CSS load: đủ global, layout, parent-dashboard, qa-fixes đúng thứ tự và đúng relative path; không 404 | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Module load: parent-dashboard.js và dependency mock-data.js load/import được qua HTTP, không 404 | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Console: không syntax/import/runtime error do skeleton; demo log được phép | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Relative navigation: Dashboard → parent-dashboard.html, Đăng xuất → ../index.html; aria-current đúng; không 404 | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Overflow: không horizontal scroll ngoài ý muốn, nội dung không bị cắt | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Semantic/readability: cấu trúc header/main/section/footer đúng, heading/TODO dễ đọc, tiếng Việt không lỗi font | — | | |
+| Parent Dashboard — `pages/parent-dashboard.html` | 390 × 844 | Click/focus: link/nút hiện có click được, nhãn và focus rõ; nếu chưa có control, ghi N/A trong Notes | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | CSS load: đủ global, layout, camera-viewer, qa-fixes đúng thứ tự và đúng relative path; không 404 | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Module load: camera-viewer.js và dependency mock-data.js load/import được qua HTTP, không 404 | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Console: không syntax/import/runtime error do skeleton; demo log được phép | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Relative navigation: Về Dashboard → parent-dashboard.html, Đăng xuất → ../index.html; không 404 | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Overflow: không horizontal scroll ngoài ý muốn, nội dung không bị cắt | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Semantic/readability: cấu trúc header/main/section/footer đúng, heading/TODO dễ đọc, tiếng Việt không lỗi font | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 1366 × 768 | Click/focus: link/nút hiện có click được, nhãn và focus rõ; nếu chưa có control, ghi N/A trong Notes | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | CSS load: đủ global, layout, camera-viewer, qa-fixes đúng thứ tự và đúng relative path; không 404 | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Module load: camera-viewer.js và dependency mock-data.js load/import được qua HTTP, không 404 | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Console: không syntax/import/runtime error do skeleton; demo log được phép | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Relative navigation: Về Dashboard → parent-dashboard.html, Đăng xuất → ../index.html; không 404 | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Overflow: không horizontal scroll ngoài ý muốn, nội dung không bị cắt | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Semantic/readability: cấu trúc header/main/section/footer đúng, heading/TODO dễ đọc, tiếng Việt không lỗi font | — | | |
+| Camera Viewer — `pages/camera-viewer.html?id=cam01` | 390 × 844 | Click/focus: link/nút hiện có click được, nhãn và focus rõ; nếu chưa có control, ghi N/A trong Notes | — | | |
+| Admin Access — `pages/admin-access.html` | 1366 × 768 | CSS load: đủ global, layout, admin-access, qa-fixes đúng thứ tự và đúng relative path; không 404 | — | | |
+| Admin Access — `pages/admin-access.html` | 1366 × 768 | Module load: admin-access.js và dependency mock-data.js load/import được qua HTTP, không 404 | — | | |
+| Admin Access — `pages/admin-access.html` | 1366 × 768 | Console: không syntax/import/runtime error do skeleton; demo log được phép | — | | |
+| Admin Access — `pages/admin-access.html` | 1366 × 768 | Relative navigation: Admin → admin-access.html, Đăng xuất → ../index.html; aria-current đúng; không 404 | — | | |
+| Admin Access — `pages/admin-access.html` | 1366 × 768 | Overflow: không horizontal scroll ngoài ý muốn, nội dung không bị cắt | — | | |
+| Admin Access — `pages/admin-access.html` | 1366 × 768 | Semantic/readability: cấu trúc header/main/section/footer đúng, heading/TODO dễ đọc, tiếng Việt không lỗi font | — | | |
+| Admin Access — `pages/admin-access.html` | 1366 × 768 | Click/focus: link/nút hiện có click được, nhãn và focus rõ; nếu chưa có control, ghi N/A trong Notes | — | | |
+| Admin Access — `pages/admin-access.html` | 390 × 844 | CSS load: đủ global, layout, admin-access, qa-fixes đúng thứ tự và đúng relative path; không 404 | — | | |
+| Admin Access — `pages/admin-access.html` | 390 × 844 | Module load: admin-access.js và dependency mock-data.js load/import được qua HTTP, không 404 | — | | |
+| Admin Access — `pages/admin-access.html` | 390 × 844 | Console: không syntax/import/runtime error do skeleton; demo log được phép | — | | |
+| Admin Access — `pages/admin-access.html` | 390 × 844 | Relative navigation: Admin → admin-access.html, Đăng xuất → ../index.html; aria-current đúng; không 404 | — | | |
+| Admin Access — `pages/admin-access.html` | 390 × 844 | Overflow: không horizontal scroll ngoài ý muốn, nội dung không bị cắt | — | | |
+| Admin Access — `pages/admin-access.html` | 390 × 844 | Semantic/readability: cấu trúc header/main/section/footer đúng, heading/TODO dễ đọc, tiếng Việt không lỗi font | — | | |
+| Admin Access — `pages/admin-access.html` | 390 × 844 | Click/focus: link/nút hiện có click được, nhãn và focus rõ; nếu chưa có control, ghi N/A trong Notes | — | | |
 
 ## Bug format
 
@@ -56,13 +74,13 @@ Chạy local server tại root (`python -m http.server 8000`). Viewport là kíc
 Ví dụ cách ghi (chỉ minh họa, không phải bug đã phát hiện):
 
 ```text
-[BUG-001] Login | 390x844 | Mở trang, click Dashboard | 404 | Mở Parent Dashboard | Major
+[BUG-001] Parent Dashboard | 390x844 | Click Đăng xuất | 404 | Mở index.html | Major
 ```
 
 - **Blocker:** không mở được trang hoặc không tiếp tục được bước kiểm thử chính.
-- **Major:** link sai, nội dung bị che/cắt đáng kể hoặc không sử dụng được hành động chính.
+- **Major:** link/module sai, nội dung bị che/cắt đáng kể hoặc không dùng được link hiện có.
 - **Minor:** lỗi hiển thị nhỏ, vẫn đọc và thao tác được.
 
 Bug thực tế: _chưa ghi nhận — điền sau khi test_.
 
-Đạt mặc định chỉ sửa checklist này. Chỉ thêm bản vá nhỏ vào `assets/css/qa-fixes.css` khi Thành đã duyệt; ghi Bug ID và phạm vi bản vá, rồi kiểm thử lại các trang liên quan ở cả hai viewport. Không sửa file HTML/CSS của owner.
+Đạt mặc định chỉ sửa checklist này, không tự sửa feature của người khác. Chỉ thêm bản vá nhỏ vào `assets/css/qa-fixes.css` khi Thành đồng ý; ghi Bug ID và phạm vi bản vá, rồi kiểm thử lại trang liên quan ở cả hai viewport. Không kiểm thử auth thật, quyền lưu qua phiên, localStorage, unauthorized access, database hoặc API trong skeleton.
