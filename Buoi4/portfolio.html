@@ -7,26 +7,11 @@
     <title>Lương Minh Đạt | Frontend Developer & UI Designer</title>
     <!-- Liên kết stylesheet bên ngoài chuẩn chỉnh, tối ưu bộ nhớ đệm (Cache) -->
     <link rel="stylesheet" href="portfolio.css">
-    <!-- Thư viện hiệu ứng cuộn trang Animate On Scroll (AOS) qua CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <script src="portfolio.js" defer></script>
 </head>
 <body>
 
-    <!-- ==========================================================
-         CHUẨN HIỆU NĂNG TỐI ƯU CHO DI ĐỘNG (MOBILE GPU ACCELERATION):
-         Toàn bộ hiệu ứng hover và chuyển động dịch chuyển trong dự án 
-         được thiết kế bằng 'transform: translate(...)' thay cho 'top/left'.
-         -> Bỏ qua chu trình Reflow (Layout) & Repaint của CPU
-         -> Xử lý trực tiếp trên GPU Compositor Thread (mượt mà 60-120fps)
-         ========================================================== -->
-
-    <!-- ==========================================================
-         VÒNG TRÒN LOADING CSS (PRELOADER): XOAY 360 ĐỘ VÔ HẠN
-         ========================================================== -->
-    <div id="preloader" class="preloader">
-        <div class="loading-spinner"></div>
-        <span class="loading-text">Đang tải Portfolio...</span>
-    </div>
+    <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
 
     <!-- Khung bố cục tổng thể sử dụng CSS Grid -->
     <div class="portfolio-layout">
@@ -41,7 +26,7 @@
             </div>
             <div class="header-actions">
                 <div class="header-status">
-                    <span class="status-dot"></span>
+                    <span class="status-dot" aria-hidden="true"></span>
                     <span>Đang sẵn sàng nhận dự án</span>
                 </div>
                 <a href="#contact" class="btn-cta">
@@ -59,7 +44,7 @@
              ========================================================== -->
         <aside class="sidebar">
             <div class="profile">
-                <div class="avatar" title="Lương Minh Đạt">NA</div>
+                <div class="avatar" title="Lương Minh Đạt">LMD</div>
                 <h3>Lương Minh Đạt</h3>
                 <div class="profile-location">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -71,7 +56,7 @@
             </div>
 
             <!-- Menu điều hướng mượt mà (Smooth Anchor Links) -->
-            <nav>
+            <nav aria-label="Điều hướng Portfolio">
                 <ul class="nav-list">
                     <li><a href="#about">👋 Giới thiệu</a></li>
                     <li><a href="#services">⚡ Dịch vụ</a></li>
@@ -107,10 +92,10 @@
         <!-- ==========================================================
              3. MAIN CONTENT: Khu vực nội dung chính
              ========================================================== -->
-        <main class="main-content">
+        <main id="main-content" class="main-content" tabindex="-1">
             
             <!-- Phần Giới thiệu & Số liệu thống kê -->
-            <section id="about" class="card" data-aos="fade-up">
+            <section id="about" class="card" data-reveal>
                 <div class="card-header">
                     <h2>Giới Thiệu Bản Thân</h2>
                     <span class="badge">Về tôi</span>
@@ -121,19 +106,19 @@
 
                 <!-- Số liệu nổi bật tạo độ tin cậy -->
                 <div class="stats-grid">
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-item">
                         <span class="stat-number">4+</span>
                         <span class="stat-label">Năm kinh nghiệm</span>
                     </div>
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-item">
                         <span class="stat-number">30+</span>
                         <span class="stat-label">Dự án hoàn thành</span>
                     </div>
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-item">
                         <span class="stat-number">100%</span>
                         <span class="stat-label">Khách hàng hài lòng</span>
                     </div>
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-item">
                         <span class="stat-number">99/100</span>
                         <span class="stat-label">Điểm Google Vitals</span>
                     </div>
@@ -144,7 +129,7 @@
                  YÊU CẦU: KHU VỰC DỊCH VỤ (.SERVICES-CONTAINER)
                  > 1024px: 4 cột | 768px-1024px: 2 cột | < 768px: 1 cột | gap: 20px
                  ========================================================== -->
-            <section id="services" class="card" data-aos="fade-up">
+            <section id="services" class="card" data-reveal>
                 <div class="card-header">
                     <h2>Dịch Vụ Cung Cấp</h2>
                     <span class="badge">4 Chuyên môn</span>
@@ -156,7 +141,7 @@
                 <div class="services-container">
                     
                     <!-- Dịch vụ 1 -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
                         <div class="service-icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
@@ -170,7 +155,7 @@
                     </div>
 
                     <!-- Dịch vụ 2 -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
                         <div class="service-icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="16 18 22 12 16 6"></polyline>
@@ -182,7 +167,7 @@
                     </div>
 
                     <!-- Dịch vụ 3 -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
                         <div class="service-icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -195,7 +180,7 @@
                     </div>
 
                     <!-- Dịch vụ 4 -->
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
                         <div class="service-icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
@@ -210,7 +195,7 @@
             </section>
 
             <!-- Phần Kỹ Năng (Flexbox Wrap) -->
-            <section id="skills" class="card" data-aos="fade-up">
+            <section id="skills" class="card" data-reveal>
                 <div class="card-header">
                     <h2>Kỹ Năng Kỹ Thuật</h2>
                     <span class="badge">Công nghệ</span>
@@ -232,7 +217,7 @@
             </section>
 
             <!-- Phần Dự Án Nổi Bật -->
-            <section id="projects" class="card" data-aos="fade-up">
+            <section id="projects" class="card" data-reveal>
                 <div class="card-header">
                     <h2>Dự Án Đã Thực Hiện</h2>
                     <span class="badge">Portfolio</span>
@@ -240,7 +225,7 @@
                 <div class="projects-grid">
                     
                     <!-- Dự án 1 -->
-                    <article class="project-item" data-aos="fade-up" data-aos-delay="100">
+                    <article class="project-item">
                         <div class="project-top">
                             <h3>Hệ Thống Dashboard Quản Trị</h3>
                             <p>Bảng điều khiển kinh doanh thông minh với biểu đồ trực quan, tối ưu tải trang dưới 1 giây và phân quyền người dùng chặt chẽ.</p>
@@ -260,7 +245,7 @@
                     </article>
 
                     <!-- Dự án 2 -->
-                    <article class="project-item" data-aos="fade-up" data-aos-delay="200">
+                    <article class="project-item">
                         <div class="project-top">
                             <h3>Website Thương Mại Điện Tử</h3>
                             <p>Giao diện bán hàng trực tuyến với giỏ hàng tương tác, bộ lọc sản phẩm mượt mà và tương thích cảm ứng trên mọi dòng smartphone.</p>
@@ -283,7 +268,7 @@
             </section>
 
             <!-- Phần Liên Hệ (Giải quyết triệt để Dead Link #contact) -->
-            <section id="contact" class="card" data-aos="fade-up">
+            <section id="contact" class="card" data-reveal>
                 <div class="card-header">
                     <h2>Kết Nối & Hợp Tác</h2>
                     <span class="badge">Sẵn sàng phản hồi</span>
@@ -293,21 +278,21 @@
                 </p>
 
                 <div class="contact-grid">
-                    <a href="mailto:nguyenvana@gmail.com" class="contact-card" data-aos="fade-up" data-aos-delay="100">
+                    <a href="mailto:nguyenvana@gmail.com" class="contact-card">
                         <div class="contact-icon">📧</div>
                         <div class="contact-info">
                             <strong>Email Trực Tiếp</strong>
                             <span>nguyenvana@gmail.com</span>
                         </div>
                     </a>
-                    <a href="tel:0987654321" class="contact-card" data-aos="fade-up" data-aos-delay="200">
+                    <a href="tel:0987654321" class="contact-card">
                         <div class="contact-icon">📞</div>
                         <div class="contact-info">
                             <strong>Số Điện Thoại</strong>
                             <span>+84 987 654 321</span>
                         </div>
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card">
                         <div class="contact-icon">💼</div>
                         <div class="contact-info">
                             <strong>Mạng LinkedIn</strong>
@@ -323,45 +308,11 @@
              4. FOOTER: Bản quyền & Trở về đầu trang
              ========================================================== -->
         <footer class="footer">
-            <p>&copy; 2026 Nguyễn Văn A. Thiết kế & phát triển chuẩn W3C, CSS Grid & Flexbox.</p>
+            <p>&copy; 2026 Lương Minh Đạt. Thiết kế & phát triển chuẩn W3C, CSS Grid & Flexbox.</p>
             <a href="#">↑ Lên đầu trang</a>
         </footer>
 
     </div>
-
-    <!-- ==========================================================
-         JAVASCRIPT: TỰ ĐỘNG ẨN PRELOADER KHI TRANG TẢI XONG
-         ========================================================== -->
-    <script>
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                var preloader = document.getElementById('preloader');
-                if (preloader) {
-                    preloader.classList.add('hide');
-                    // Đồng bộ AOS sau khi màn hình loading ẩn đi
-                    setTimeout(function () {
-                        if (typeof AOS !== 'undefined') {
-                            AOS.refresh();
-                        }
-                    }, 400);
-                }
-            }, 600); // 0.6 giây để tạo trải nghiệm mượt mà
-        });
-    </script>
-
-    <!-- ==========================================================
-         THƯ VIỆN AOS (ANIMATE ON SCROLL) QUA CDN & KHỞI TẠO
-         ========================================================== -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        // Khởi tạo hiệu ứng cuộn trang AOS
-        AOS.init({
-            duration: 800,        // Thời gian chuyển động (0.8 giây)
-            easing: 'ease-out-cubic', // Gia tốc chuyển động tự nhiên
-            once: true,           // Chỉ chạy hiệu ứng 1 lần khi cuộn tới
-            offset: 80            // Khoảng cách kích hoạt trước khi chạm tới mép màn hình
-        });
-    </script>
 
 </body>
 </html>
