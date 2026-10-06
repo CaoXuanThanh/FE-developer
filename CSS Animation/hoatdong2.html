@@ -120,6 +120,11 @@
         }
 
     </style>
+    <noscript>
+        <style>
+            [data-aos] { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
 </head>
 
 <body>
@@ -183,10 +188,17 @@
     </script>
 
     <script>
-        AOS.init({
-            duration: 800,
-            once: true
-        });
+        try {
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+        } catch {
+            // Nội dung vẫn đọc được nếu thư viện AOS không tải/khởi tạo được.
+            document.querySelectorAll('[data-aos]').forEach(function (section) {
+                section.removeAttribute('data-aos');
+            });
+        }
     </script>
 
 </body>

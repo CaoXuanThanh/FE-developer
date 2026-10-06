@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 4 · Parallax</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f9fc; color: #17354c; font-family: Arial, sans-serif; line-height: 1.7; }
+    a { color: #075c82; text-underline-offset: 4px; }
+    a:focus-visible { outline: 3px solid #0e948b; outline-offset: 6px; }
+    .topbar { display: flex; justify-content: space-between; gap: 20px; padding: 20px max(24px, calc((100% - 1040px) / 2)); background: white; }
+    .topbar span { color: #4b6578; }
+    .landscape {
+      display: grid; place-items: center; min-height: 85vh; padding: 72px 24px;
+      color: white; text-align: center;
+      background-color: #12415d;
+      background-image: linear-gradient(180deg, rgba(8, 35, 58, .15), rgba(6, 29, 49, .66)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000'%3E%3Cdefs%3E%3ClinearGradient id='sky' x2='0' y2='1'%3E%3Cstop stop-color='%2383bdd1'/%3E%3Cstop offset='1' stop-color='%23d5e8de'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23sky)' d='M0 0h1600v1000H0z'/%3E%3Ccircle cx='1160' cy='245' r='90' fill='%23f9e5a8'/%3E%3Cpath d='M0 550 230 230 460 510 770 145 1090 560 1350 255 1600 500V1000H0Z' fill='%237fa8b6'/%3E%3Cpath d='m685 262 85-117 125 162-94-43-51 19-28-41Z' fill='%23dfeeed'/%3E%3Cpath d='M0 710 330 405 665 755 1030 365 1380 695 1600 515V1000H0Z' fill='%233e7c8c'/%3E%3Cpath d='M0 850 250 740 550 920 850 620 1140 830 1390 685 1600 860V1000H0Z' fill='%231f5669'/%3E%3C/svg%3E");
+      background-size: cover; background-position: center; background-attachment: fixed;
+    }
+    .landscape > div { max-width: 700px; }
+    .eyebrow { margin: 0 0 16px; font-size: .8rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1.12; letter-spacing: -.04em; }
+    .landscape p:not(.eyebrow) { max-width: 520px; margin: 24px auto; font-size: 1.1rem; }
+    .scroll-link { display: inline-block; margin-top: 16px; padding: 12px 24px; border: 1px solid #d5e8ed; border-radius: 999px; color: white; text-decoration: none; }
+    .scroll-link:hover { background: rgba(255,255,255,.16); }
+    .chapter { display: grid; align-content: center; min-height: 65vh; max-width: 850px; margin: auto; padding: 80px 24px; }
+    .chapter .eyebrow { color: #08756f; }
+    h2 { margin: 0 0 20px; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; }
+    .chapter p { max-width: 650px; margin: 0 0 20px; color: #486175; font-size: 1.1rem; }
+    .second-view { min-height: 70vh; }
+    code { padding: 3px 7px; border-radius: 5px; background: #e5eef4; color: #17465f; font-size: .9em; overflow-wrap: anywhere; }
+    footer { padding: 24px; text-align: center; border-top: 1px solid #dae5ec; color: #486175; }
+    @media (max-width: 480px) { .topbar { flex-direction: column; gap: 6px; } }
+    @media (prefers-reduced-motion: reduce) { .landscape { background-attachment: scroll; } }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Điều hướng bài tập">
+    <a href="../hoatdong2.html">← Portfolio</a>
+    <span>Tuần 5 / Bài 04</span>
+  </nav>
+  <main>
+    <header class="landscape">
+      <div>
+        <p class="eyebrow">Một chuyến đi bằng thao tác cuộn</p>
+        <h1>Chậm lại.<br>Ngắm núi xa.</h1>
+        <p>Cuộn xuống để thấy nội dung lướt qua, trong khi bức tranh núi vẫn đứng yên phía sau.</p>
+        <a class="scroll-link" href="#kham-pha">Khám phá bên dưới ↓</a>
+      </div>
+    </header>
+    <section class="chapter" id="kham-pha" aria-labelledby="chapter-one">
+      <p class="eyebrow">01 / Lớp phía trước</p>
+      <h2 id="chapter-one">Một khung cảnh, hai nhịp chuyển động.</h2>
+      <p>Khối nội dung này cuộn cùng trang. Bức tranh ở phía sau được gắn với khung nhìn, tạo cảm giác chiều sâu khi bạn đi qua các phần nội dung.</p>
+      <p>Hiệu ứng dùng <code>background-attachment: fixed</code>. Hãy tiếp tục cuộn để quan sát khung cảnh xuất hiện lần nữa.</p>
+    </section>
+    <section class="landscape second-view" aria-labelledby="mountain-title">
+      <div>
+        <p class="eyebrow">02 / Lớp phía sau</p>
+        <h2 id="mountain-title">Núi vẫn ở đó.<br>Câu chuyện tiếp tục.</h2>
+        <p>Nội dung chuyển động qua phong cảnh, mang đến một khoảng nghỉ giữa những đoạn văn.</p>
+      </div>
+    </section>
+    <section class="chapter" aria-labelledby="chapter-three">
+      <p class="eyebrow">03 / Kết thúc hành trình</p>
+      <h2 id="chapter-three">Nhẹ nhàng và dễ đọc.</h2>
+      <p>Lớp màu tối giúp chữ nổi bật trên nền núi. Khi thiết bị bật tùy chọn giảm chuyển động, nền cuộn cùng nội dung để việc đọc thoải mái hơn.</p>
+      <p>Một số trình duyệt di động có thể hiển thị nền cuộn thông thường. Bạn có thể xem hiệu ứng nền cố định trên trình duyệt máy tính.</p>
+      <a href="../Bai5_Hamburger/index.html">Tiếp theo: Hamburger menu →</a>
+    </section>
+  </main>
+  <footer>CSS Animation · Parallax · Không dùng JavaScript</footer>
+</body>
+</html>

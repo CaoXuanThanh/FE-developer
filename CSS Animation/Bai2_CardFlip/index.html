@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 2 — Card Flip | TiNi</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #16324f; background: #f3f8fc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 48px 24px; }
+    main { width: min(100%, 560px); text-align: center; }
+    .eyebrow { color: #087c81; font-size: .8rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { font-size: clamp(2rem, 7vw, 3.1rem); line-height: 1.15; letter-spacing: -.04em; margin: 18px 0; }
+    .intro, .hint { line-height: 1.7; color: #4e6378; }
+    .flip-scene { width: min(100%, 340px); margin: 36px auto 24px; }
+    .flip-toggle { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .flip-card { display: block; height: 380px; border-radius: 24px; cursor: pointer; perspective: 1100px; -webkit-tap-highlight-color: transparent; }
+    .flip-card__inner { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .flip-face { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 28px; border-radius: 24px; backface-visibility: hidden; -webkit-backface-visibility: hidden; box-shadow: 0 18px 45px #16324f14; }
+    .flip-front { background: white; border: 1px solid #dce8f0; }
+    .avatar { display: grid; place-items: center; width: 88px; height: 88px; border-radius: 28px; background: #e2efff; color: #1261cf; font-size: 2rem; font-weight: 800; }
+    .name { display: block; margin-top: 24px; font-size: 2rem; font-weight: 800; }
+    .role { margin-top: 8px; color: #4e6378; }
+    .card-note { margin-top: 30px; font-size: .85rem; color: #087c81; }
+    .flip-back { transform: rotateY(180deg); background: #1261cf; color: white; }
+    .back-title { font-size: 1.6rem; font-weight: 750; }
+    .back-copy { margin: 18px 0 24px; line-height: 1.65; }
+    .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .skill { padding: 7px 11px; border: 1px solid #ffffff66; border-radius: 999px; font-size: .82rem; }
+    .flip-back .card-note { color: white; }
+    .flip-toggle:checked + .flip-card .flip-card__inner { transform: rotateY(180deg); }
+    .flip-toggle:focus-visible + .flip-card { outline: 3px solid #087c81; outline-offset: 7px; }
+    .hint { font-size: .88rem; max-width: 380px; margin: auto; }
+    @media (hover: hover) and (pointer: fine) { .flip-card:hover .flip-card__inner { transform: rotateY(180deg); } }
+    @media (prefers-reduced-motion: reduce) { .flip-card__inner { transition: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="eyebrow">TiNi · CSS Animation · Bài 02</span>
+      <h1>Một tấm thẻ,<br>hai góc nhìn.</h1>
+      <p class="intro">Lật thẻ để khám phá thêm một chút về mình.</p>
+    </header>
+    <div class="flip-scene">
+      <input class="flip-toggle" id="flip-card" type="checkbox" aria-label="Giữ thẻ ở mặt sau" aria-describedby="flip-hint">
+      <label class="flip-card" for="flip-card">
+        <span class="flip-card__inner">
+          <span class="flip-face flip-front">
+            <span class="avatar" aria-hidden="true">TN</span>
+            <span class="name">TiNi</span>
+            <span class="role">Frontend Developer</span>
+            <span class="card-note">Khám phá mặt sau ↗</span>
+          </span>
+          <span class="flip-face flip-back">
+            <span class="back-title">Mình thích tạo nên…</span>
+            <span class="back-copy">Những giao diện rõ ràng, dễ sử dụng và có chuyển động nhẹ nhàng.</span>
+            <span class="skills"><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span></span>
+            <span class="card-note">Luôn học thêm mỗi ngày.</span>
+          </span>
+        </span>
+      </label>
+    </div>
+    <p class="hint" id="flip-hint">Di chuột để xem mặt sau. Chạm vào thẻ, hoặc dùng Tab rồi Space, để bật/tắt chế độ giữ mặt sau.</p>
+  </main>
+</body>
+</html>

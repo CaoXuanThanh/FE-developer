@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 5 · Hamburger menu</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f9fc; color: #17354c; font-family: Arial, sans-serif; line-height: 1.7; }
+    a { color: #075c82; text-underline-offset: 4px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #0e948b; outline-offset: 5px; }
+    .shell { width: min(100% - 48px, 960px); margin: auto; }
+    header { background: white; border-bottom: 1px solid #dae5ec; }
+    .header-row { min-height: 96px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .brand { color: #17354c; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+    .menu-control { display: flex; align-items: center; gap: 16px; }
+    .menu-control > span { color: #486175; font-size: .9rem; }
+    .menu-toggle { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 56px; height: 56px; padding: 0; border: 1px solid #c8dce8; border-radius: 16px; background: #edf6fb; cursor: pointer; }
+    .menu-toggle:hover { background: #deeff7; }
+    .bar { display: block; width: 24px; height: 2px; border-radius: 2px; background: #075c82; transition: transform 300ms ease-in-out, opacity 300ms ease-in-out; }
+    .menu-toggle.is-open .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.is-open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .menu-toggle.is-open .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .site-nav { padding: 0 0 24px; }
+    .site-nav ul { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .site-nav a { display: block; padding: 10px 20px; border-radius: 10px; background: #edf6fb; text-decoration: none; }
+    .site-nav a:hover { background: #dceef5; }
+    main { padding: 70px 0 50px; }
+    .eyebrow { margin: 0 0 16px; color: #08756f; font-size: .8rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    h1 { max-width: 720px; margin: 0 0 24px; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; letter-spacing: -.04em; }
+    .intro { max-width: 650px; margin: 0; color: #486175; font-size: 1.1rem; }
+    .cards { display: grid; gap: 20px; margin-top: 48px; }
+    .card { padding: clamp(24px, 5vw, 40px); border: 1px solid #dae5ec; border-radius: 20px; background: white; scroll-margin-top: 24px; }
+    .card:target { border-color: #0e948b; }
+    h2 { margin: 0 0 12px; font-size: 1.45rem; }
+    .card p { margin: 0; color: #486175; }
+    kbd { padding: 3px 6px; border: 1px solid #cadbe5; border-radius: 5px; background: #f5f9fc; }
+    footer { padding: 24px 0 36px; }
+    @media (max-width: 480px) { .menu-control > span { display: none; } .site-nav ul { flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { .bar { transition: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-row shell">
+      <a class="brand" href="../hoatdong2.html">TiNi / Portfolio</a>
+      <div class="menu-control">
+        <span>Thử mở menu →</span>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Mở menu">
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <nav class="site-nav shell" id="site-menu" aria-label="Điều hướng nội dung" hidden>
+      <ul>
+        <li><a href="#gioi-thieu">Giới thiệu</a></li>
+        <li><a href="#chuyen-dong">Chuyển động</a></li>
+        <li><a href="#ban-phim">Bàn phím</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="shell">
+    <p class="eyebrow">Tuần 5 / Bài 05</p>
+    <h1>Ba gạch nhỏ.<br>Một chuyển động rõ ràng.</h1>
+    <p class="intro">Nhấn nút menu ở góc trên để biến biểu tượng hamburger thành dấu X và mở các liên kết điều hướng.</p>
+    <div class="cards">
+      <section class="card" id="gioi-thieu" tabindex="-1" aria-labelledby="intro-title">
+        <h2 id="intro-title">01 / Giới thiệu</h2>
+        <p>Biểu tượng có ba thanh riêng biệt. Khi mở menu, thanh trên và thanh dưới xoay thành dấu X, thanh giữa mờ đi. Nhấn lần nữa để đóng menu.</p>
+      </section>
+      <section class="card" id="chuyen-dong" tabindex="-1" aria-labelledby="motion-title">
+        <h2 id="motion-title">02 / Chuyển động</h2>
+        <p>Transition 300ms với ease-in-out giúp chuyển trạng thái vừa đủ nhanh, bắt đầu và kết thúc nhẹ nhàng. Chỉ transform và opacity thay đổi trong quá trình chuyển động.</p>
+      </section>
+      <section class="card" id="ban-phim" tabindex="-1" aria-labelledby="keyboard-title">
+        <h2 id="keyboard-title">03 / Điều khiển bằng bàn phím</h2>
+        <p>Dùng <kbd>Tab</kbd> đến nút menu, nhấn <kbd>Enter</kbd> hoặc <kbd>Space</kbd> để mở. Tiếp tục Tab qua các liên kết. Nhấn <kbd>Esc</kbd> để đóng và quay lại nút menu.</p>
+      </section>
+    </div>
+  </main>
+  <footer class="shell"><a href="../Bai6_SkillBar/index.html">Tiếp theo: Skill bars →</a></footer>
+  <script>
+    const button = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('#site-menu');
+    function setMenu(open) {
+      button.classList.toggle('is-open', open);
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Đóng menu' : 'Mở menu');
+      menu.hidden = !open;
+    }
+    button.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) { setMenu(false); button.focus(); }
+    });
+    menu.addEventListener('click', (event) => {
+      const link = event.target.closest('a');
+      if (link) { setMenu(false); document.querySelector(link.hash).focus(); }
+    });
+  </script>
+</body>
+</html>
