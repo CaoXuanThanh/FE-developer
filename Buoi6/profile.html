@@ -16,11 +16,19 @@
 
     <!-- SIDEBAR BÊN TRÁI -->
     <aside class="sidebar">
+        <!-- Nút Hamburger Menu (Mobile) -->
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div class="avatar">
             <span>ĐN</span>
         </div>
         <h2>Đào Nhựt Quang Minh</h2>
-        <p class="role">Frontend Developer</p>
+        <div class="typing-container">
+            <p class="typing-text role">Web Developer - Frontend</p>
+        </div>
         <p class="location">📍 Đồng Nai, Việt Nam</p>
         
         <nav class="nav-menu">
@@ -62,7 +70,34 @@
                 <h3>Giới thiệu Bản Thân</h3>
                 <span class="badge">Xin chào 👋</span>
             </div>
-            <p class="desc-text">Tôi là một lập trình viên Frontend đam mê xây dựng giao diện người dùng hiện đại, tối ưu trải nghiệm và tương thích trên đa nền tảng thiết bị. Luôn theo đuổi các chuẩn mực code sạch và công nghệ mới như CSS Grid, Flexbox, và ReactJS.</p>
+            
+            <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                    <p class="desc-text">Xin chào, tôi là Đào Nhựt Quang Minh, một Web Developer đến từ Đồng Nai. Tôi đam mê biến những bản thiết kế thành các giao diện hiện đại, mượt mà và thân thiện, nơi vẻ đẹp thẩm mỹ gặp gỡ trải nghiệm người dùng thực sự.
+
+Tôi có nền tảng vững chắc về HTML5, CSS3 và JavaScript (ES6+), cùng khả năng xây dựng bố cục linh hoạt với Flexbox và CSS Grid. Mỗi dự án, tôi đều chú trọng thiết kế responsive để website hiển thị hoàn hảo trên điện thoại, máy tính bảng lẫn màn hình lớn. Bên cạnh đó, tôi quen thuộc với Git/GitHub để làm việc nhóm hiệu quả và dùng Figma để chuyển hóa ý tưởng UI/UX thành sản phẩm thật..</p>
+                </div>
+
+                <!-- Thẻ nhân sự lật 3D -->
+                <div class="flip-container">
+                    <div class="flip-card">
+                        <!-- Mặt trước -->
+                        <div class="flip-front">
+                            <div class="avatar" style="margin: 0 auto 16px; box-shadow: none;"><span>ĐN</span></div>
+                            <h3 style="font-size: 18px; margin-bottom: 5px;">Đào Nhựt Quang Minh</h3>
+                            <p style="color: var(--primary-color); font-size: 14px; font-weight: 600;">Frontend Developer</p>
+                        </div>
+                        
+                        <!-- Mặt sau -->
+                        <div class="flip-back">
+                            <h3 style="font-size: 18px; margin-bottom: 10px; color: white;">Thông tin liên hệ</h3>
+                            <p style="font-size: 14px; margin-bottom: 5px;">Email: quangminh100527@gmail.com</p>
+                            <p style="font-size: 14px; margin-bottom: 15px;">Phone: 0862.517.129</p>
+                            <a href="#contact" class="btn-primary" style="text-decoration: none; display: inline-block;">Kết nối ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Kỹ năng -->
@@ -70,6 +105,8 @@
             <div class="card-header">
                 <h3>Kỹ Năng Chuyên Môn</h3>
             </div>
+
+            <!-- Phần 1: Skill Pills (giữ nguyên) -->
             <div class="skills-container">
                 <span class="skill-pill">HTML5</span>
                 <span class="skill-pill">CSS3</span>
@@ -80,6 +117,70 @@
                 <span class="skill-pill">Git / GitHub</span>
                 <span class="skill-pill">UI/UX Design</span>
                 <span class="skill-pill">Figma</span>
+            </div>
+
+            <!-- Phần 2: Progress Bars -->
+            <div class="progress-list">
+                <!-- HTML5: 90% -->
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>HTML5</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--target-width: 90%;"></div>
+                    </div>
+                </div>
+                <!-- CSS3: 85% -->
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>CSS3 / SCSS</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--target-width: 85%;"></div>
+                    </div>
+                </div>
+                <!-- JavaScript: 75% -->
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>JavaScript (ES6+)</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--target-width: 75%;"></div>
+                    </div>
+                </div>
+                <!-- Responsive Design: 88% -->
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Responsive Design</span>
+                        <span>88%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--target-width: 88%;"></div>
+                    </div>
+                </div>
+                <!-- Figma / UI/UX: 70% -->
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Figma / UI·UX</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--target-width: 70%;"></div>
+                    </div>
+                </div>
+                <!-- Git / GitHub: 80% -->
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Git / GitHub</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--target-width: 80%;"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -139,6 +240,14 @@
             </div>
         </section>
 
+        <!-- Parallax Background Section -->
+        <section class="parallax-section">
+            <div class="parallax-content">
+                <h2 style="margin-bottom: 15px; font-size: 28px;">Thiết kế vượt giới hạn</h2>
+                <p style="font-size: 16px; line-height: 1.6;">Đưa từng dòng code vào thực tiễn, tạo ra không gian web 3D và đa chiều cho mọi người dùng.</p>
+            </div>
+        </section>
+
         <!-- Liên hệ -->
         <section class="card glass-effect" data-aos="fade-up" id="contact">
             <div class="card-header">
@@ -155,6 +264,16 @@
             &copy; 2026 Đào Nhựt Quang Minh.<br>Thiết kế tinh gọn bằng CSS Grid & Flexbox chuẩn chỉnh.
         </footer>
     </main>
+
+    <!-- Nút Floating Zalo -->
+    <a href="#" class="floating-btn zalo" aria-label="Zalo">
+        <strong style="color: white; font-size: 18px; font-family: sans-serif;">Zalo</strong>
+    </a>
+
+    <!-- Nút Floating Messenger -->
+    <a href="#" class="floating-btn messenger" aria-label="Chat">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28px" height="28px"><path d="M12 2C6.477 2 2 6.14 2 11.25c0 2.87 1.464 5.427 3.755 7.072-.32 1.353-1.138 3.155-1.238 3.385-.125.29.15.587.43.434 2.067-.98 4.195-1.624 4.195-1.624 1.037.28 2.128.433 3.258.433 5.523 0 10-4.14 10-9.25S17.523 2 12 2zm.864 12.365l-2.42-2.518-4.673 2.518 5.127-5.414 2.454 2.518 4.63-2.518-5.118 5.414z"/></svg>
+    </a>
 
     <!-- Thư viện AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -181,6 +300,15 @@
                 }, 500); 
             }, 800);
         });
+        
+        // Toggle Hamburger Menu
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        if (hamburgerMenu) {
+            hamburgerMenu.addEventListener('click', function() {
+                this.classList.toggle('active');
+                // Có thể thêm logic bật tắt menu (ví dụ: navMenu.classList.toggle('show')) ở đây
+            });
+        }
     </script>
 </body>
 </html>

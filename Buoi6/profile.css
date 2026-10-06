@@ -1,4 +1,4 @@
-﻿/* ==============================================================
+/* ==============================================================
    1. BẢNG BIẾN TOÀN CỤC TẠI :ROOT (CSS VARIABLES SYSTEM)
    Bao gồm toàn bộ:
    - Hệ thống màu sắc: Chủ đạo, văn bản, nền, bề mặt, viền & hiệu ứng RGBA
@@ -470,7 +470,7 @@ button:active,
     /* 2. Tối ưu Sidebar khi hiển thị ở đầu trang */
     .sidebar {
         grid-area: sidebar;
-        position: static;                        /* Bỏ sticky cố định khi ở giao diện mobile */
+        position: relative;                      /* Đổi thành relative làm gốc tọa độ cho Hamburger Menu */
         top: 0;
         width: 100%;
         padding: var(--spacing-24) var(--spacing-16);
@@ -622,3 +622,317 @@ button:active,
     opacity: 0;
     visibility: hidden;
 }
+
+
+/* ================= FLOATING BUTTON ================= */
+.floating-btn {
+    position: fixed;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    text-decoration: none;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.floating-btn.messenger {
+    bottom: 30px;
+    background-color: #0084ff; /* Màu xanh Messenger */
+    box-shadow: 0 4px 10px rgba(0, 132, 255, 0.3);
+    --pulse-color: rgba(0, 132, 255, 0.7);
+    --pulse-color-fade: rgba(0, 132, 255, 0);
+}
+
+.floating-btn.zalo {
+    bottom: 110px;
+    background-color: #0068ff; /* Màu xanh Zalo */
+    box-shadow: 0 4px 10px rgba(0, 104, 255, 0.3);
+    --pulse-color: rgba(0, 104, 255, 0.7);
+    --pulse-color-fade: rgba(0, 104, 255, 0);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 var(--pulse-color);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 15px var(--pulse-color-fade);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 var(--pulse-color-fade);
+    }
+}
+
+
+/* =========================================
+   CARD FLIP EFFECT 3D (Thẻ nhân sự)
+========================================= */
+.flip-container {
+    width: 250px;
+    height: 300px;
+    perspective: 1000px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.flip-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius);
+}
+
+.flip-container:hover .flip-card {
+    transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-20);
+    box-sizing: border-box;
+}
+
+.flip-front {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    z-index: 2;
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--color-white);
+}
+
+.flip-back p {
+    color: var(--color-white);
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   TYPING EFFECT (Hiệu ứng máy đánh chữ)
+========================================= */
+.typing-container {
+    display: inline-block;
+    margin-bottom: var(--spacing-4);
+}
+
+.typing-text {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid var(--primary-color);
+    font-family: monospace;
+    font-size: 14px; /* Ghi đè size của .role nếu cần hoặc để nguyên */
+    margin-bottom: 0;
+    animation: 
+        typing 3.5s steps(24, end) infinite alternate,
+        blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 24ch; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--primary-color); }
+}
+
+
+/* =========================================
+   PARALLAX BACKGROUND SECTION
+========================================= */
+.parallax-section {
+    position: relative;
+    min-height: 450px;
+    background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop');
+    
+    /* Cơ chế Parallax */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* Bố cục Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden; /* Cắt lớp ::before nếu bị tràn khỏi bo góc */
+}
+
+/* Lớp phủ tối bán phần bằng pseudo-element */
+.parallax-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1; /* Đảm bảo nằm trên ảnh nền nhưng dưới chữ */
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2; /* Nổi lên trên lớp phủ ::before */
+    color: #ffffff;
+    text-align: center;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+/* =========================================
+   HAMBURGER MENU TO X ANIMATION
+========================================= */
+/* Bộ khung nút bấm */
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px; /* Tổng chiều cao: 3 thanh (9px) + 2 khoảng trống (15px) */
+    cursor: pointer;
+    /* Đưa nút bấm sang góc trên cùng bên trái của Sidebar */
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 100;
+}
+
+/* 3 gạch ngang cấu tạo từ the span */
+.hamburger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-primary); /* Màu mặc định của gạch */
+    border-radius: 3px;
+    /* Transition xử lý mượt mà sự thay đổi transform và opacity */
+    transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* --- KỊCH BẢN KHI ĐƯỢC THÊM CLASS .active --- */
+
+/* 1. Gạch trên: Dịch chuyển xuống chính giữa (10.5px) rồi xoay 45 độ */
+.hamburger-menu.active span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+    background-color: var(--primary-color); /* Đổi màu khi thành dấu X (Tùy chọn) */
+}
+
+/* 2. Gạch giữa: Mờ dần đến biến mất hoàn toàn */
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+/* 3. Gạch dưới: Dịch chuyển ngược lên chính giữa (-10.5px) rồi xoay -45 độ */
+.hamburger-menu.active span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+    background-color: var(--primary-color);
+}
+
+/* Chỉ hiển thị Menu Hamburger trên giao diện Mobile (ẩn ở Desktop) */
+@media (min-width: 768px) {
+    .hamburger-menu {
+        display: none !important;
+    }
+}
+
+
+/* =========================================
+   PROGRESS BARS - KỸ NĂNG
+========================================= */
+.progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-16);
+    margin-top: var(--spacing-20);
+}
+
+/* Mỗi dòng kỹ năng gồm label + bar */
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+}
+
+/* Nhãn tên kỹ năng + phần trăm */
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.progress-label span:last-child {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Khung nền thanh tiến trình */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--color-bg-subtle);
+    border-radius: 99px;
+    overflow: hidden; /* Cắt phần thanh con nếu tràn bo góc */
+}
+
+/* Thanh màu bên trong (con) - dùng CSS Variable để nhận giá trị target */
+.progress-fill {
+    height: 100%;
+    width: 0; /* Bắt đầu từ 0 */
+    border-radius: 99px;
+
+    /* Gradient đồng bộ với màu chủ đạo của trang */
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+
+    /* 
+       TỐI ƯU HIỆU NĂNG:
+       - animation-fill-mode: forwards giữ thanh ở đích sau khi chạy xong
+       - GPU acceleration thông qua will-change
+    */
+    animation: fillBar 2s ease-out forwards;
+    will-change: width;
+}
+
+/* Keyframe: Chạy từ 0 đến giá trị --target-width được set bằng inline style */
+@keyframes fillBar {
+    from { width: 0; }
+    to   { width: var(--target-width); }
+}
+
+/* Thêm hiệu ứng delay nhẹ cho từng thanh để tạo cảm giác xuất hiện tuần tự */
+.progress-item:nth-child(1) .progress-fill { animation-delay: 0.1s; }
+.progress-item:nth-child(2) .progress-fill { animation-delay: 0.25s; }
+.progress-item:nth-child(3) .progress-fill { animation-delay: 0.4s; }
+.progress-item:nth-child(4) .progress-fill { animation-delay: 0.55s; }
+.progress-item:nth-child(5) .progress-fill { animation-delay: 0.7s; }
+.progress-item:nth-child(6) .progress-fill { animation-delay: 0.85s; }
