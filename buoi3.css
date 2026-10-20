@@ -8,7 +8,7 @@
 /* =========================================
    1. FLEXBOX: Căn giữa đối tượng
    ========================================= */
-.flex-wrapper {
+.flex-wrapper {á
     /* Đảm bảo vùng chứa có chiều cao toàn màn hình để có thể căn giữa theo chiều dọc */
     height: 100vh; 
     
