@@ -1,36 +1,526 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login | School Camera Access</title>
-  <link rel="stylesheet" href="assets/css/global.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/pages/login.css">
-  <link rel="stylesheet" href="assets/css/qa-fixes.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="School Camera Access - hệ thống quản trị quyền truy cập camera trường học.">
+  <title>School Camera Access</title>
+
+  <!-- Icon library -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+
+  <!-- Animate.css -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  >
+
+  <!-- AOS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+  >
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <!-- SHARED SHELL: DO NOT EDIT WITHOUT ARCHITECT APPROVAL -->
-  <header class="site-header">
-    <div class="container">
-      <p class="site-title">School Camera Access</p>
+  <!-- CSS-only theme toggle: no business JavaScript -->
+  <input class="theme-toggle-input" type="checkbox" id="theme-toggle" aria-label="Bật giao diện tối">
+
+  <div class="app">
+    <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+
+    <aside class="sidebar animate__animated animate__fadeInLeft" aria-label="Điều hướng quản trị">
+      <div>
+        <a class="brand" href="#dashboard" aria-label="School Camera Access">
+          <span class="brand-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
+          <span class="brand-copy">
+            <strong>School Camera</strong>
+            <small>Access Console</small>
+          </span>
+        </a>
+
+        <nav class="side-nav" aria-label="Điều hướng chính">
+          <a class="active" href="#dashboard">
+            <i class="fa-solid fa-grid-2"></i><span>Dashboard</span>
+          </a>
+          <a href="#access">
+            <i class="fa-solid fa-user-shield"></i><span>Access Control</span>
+          </a>
+          <a href="#cameras">
+            <i class="fa-solid fa-video"></i><span>Cameras</span>
+          </a>
+          <a href="#accounts">
+            <i class="fa-solid fa-users"></i><span>Accounts</span>
+          </a>
+          <a href="#activity">
+            <i class="fa-solid fa-clock-rotate-left"></i><span>Activity</span>
+          </a>
+        </nav>
+      </div>
+
+      <section class="sidebar-card" aria-label="Trạng thái hệ thống">
+        <div class="system-state">
+          <span class="pulse-dot"></span>
+          <span>System operational</span>
+        </div>
+        <p>24/26 cameras online</p>
+        <a href="#cameras">View status</a>
+      </section>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-left">
+          <span class="breadcrumb">Operations / <strong>Access Control</strong></span>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="icon-button theme-button" for="theme-toggle" title="Chuyển giao diện sáng/tối">
+            <i class="fa-solid fa-moon"></i>
+          </label>
+
+          <button class="icon-button notification-button" type="button" aria-label="Thông báo">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-dot" aria-hidden="true"></span>
+          </button>
+
+          <div class="user-menu">
+            <span class="user-avatar">CT</span>
+            <span class="user-copy">
+              <strong>Cao Xuân Thành</strong>
+              <small>Administrator</small>
+            </span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content">
+        <section class="section dashboard-section" id="dashboard">
+          <div class="section-heading animate__animated animate__fadeInUp">
+            <div>
+              <span class="eyebrow">Overview</span>
+              <h1>Good afternoon, Thành.</h1>
+              <p>Monitor access, cameras and account activity from one place.</p>
+            </div>
+
+            <a class="primary-action" href="#access">
+              <i class="fa-solid fa-plus"></i>
+              <span>Manage access</span>
+            </a>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card" data-aos="fade-up">
+              <div class="metric-top">
+                <span class="metric-icon blue"><i class="fa-solid fa-users"></i></span>
+                <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 4.8%</span>
+              </div>
+              <p>Active parent accounts</p>
+              <strong>1,284</strong>
+              <small>+59 this month</small>
+            </article>
+
+            <article class="metric-card" data-aos="fade-up" data-aos-delay="80">
+              <div class="metric-top">
+                <span class="metric-icon violet"><i class="fa-solid fa-user-graduate"></i></span>
+                <span class="trend neutral">98.6%</span>
+              </div>
+              <p>Linked students</p>
+              <strong>1,326</strong>
+              <small>18 need review</small>
+            </article>
+
+            <article class="metric-card" data-aos="fade-up" data-aos-delay="160">
+              <div class="metric-top">
+                <span class="metric-icon green"><i class="fa-solid fa-video"></i></span>
+                <span class="trend up"><i class="fa-solid fa-circle-check"></i> Healthy</span>
+              </div>
+              <p>Camera availability</p>
+              <strong>24 / 26</strong>
+              <small>92.3% online</small>
+            </article>
+
+            <article class="metric-card warning-card" data-aos="fade-up" data-aos-delay="240">
+              <div class="metric-top">
+                <span class="metric-icon amber"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                <span class="trend warning">Action needed</span>
+              </div>
+              <p>Pending access reviews</p>
+              <strong>12</strong>
+              <small>3 marked high priority</small>
+            </article>
+          </div>
+
+          <div class="analytics-grid">
+            <article class="panel access-overview" data-aos="fade-right">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Access overview</span>
+                  <h2>Permission activity</h2>
+                </div>
+                <span class="period-chip">Last 7 days</span>
+              </div>
+
+              <div class="chart-layout">
+                <div class="bar-chart" aria-label="Biểu đồ hoạt động quyền truy cập 7 ngày">
+                  <div class="bar-column">
+                    <span style="--height: 45%"></span><small>Mon</small>
+                  </div>
+                  <div class="bar-column">
+                    <span style="--height: 68%"></span><small>Tue</small>
+                  </div>
+                  <div class="bar-column">
+                    <span style="--height: 56%"></span><small>Wed</small>
+                  </div>
+                  <div class="bar-column">
+                    <span style="--height: 83%"></span><small>Thu</small>
+                  </div>
+                  <div class="bar-column">
+                    <span style="--height: 72%"></span><small>Fri</small>
+                  </div>
+                  <div class="bar-column">
+                    <span style="--height: 38%"></span><small>Sat</small>
+                  </div>
+                  <div class="bar-column">
+                    <span style="--height: 50%"></span><small>Sun</small>
+                  </div>
+                </div>
+
+                <div class="chart-summary">
+                  <strong>346</strong>
+                  <span>access events</span>
+                  <p><i class="fa-solid fa-arrow-up"></i> 12.4% from previous week</p>
+                </div>
+              </div>
+            </article>
+
+            <aside class="panel camera-health" data-aos="fade-left">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Camera health</span>
+                  <h2>Live status</h2>
+                </div>
+              </div>
+
+              <div class="donut-wrap">
+                <div class="donut" aria-label="92 phần trăm camera online">
+                  <span><strong>92%</strong><small>online</small></span>
+                </div>
+                <div class="donut-legend">
+                  <p><i class="legend-dot online"></i><span>Online</span><strong>24</strong></p>
+                  <p><i class="legend-dot offline"></i><span>Offline</span><strong>2</strong></p>
+                  <p><i class="legend-dot maintenance"></i><span>Maintenance</span><strong>0</strong></p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section" id="access" data-aos="fade-up">
+          <div class="section-heading compact">
+            <div>
+              <span class="eyebrow">Access Control</span>
+              <h2>Parent camera permissions</h2>
+              <p>Review account-to-student mappings and assigned cameras.</p>
+            </div>
+
+            <div class="section-actions">
+              <button class="secondary-action" type="button">
+                <i class="fa-solid fa-filter"></i> Filter
+              </button>
+              <button class="primary-action" type="button">
+                <i class="fa-solid fa-user-plus"></i> Grant access
+              </button>
+            </div>
+          </div>
+
+          <div class="access-layout">
+            <article class="panel parent-profile">
+              <div class="profile-head">
+                <div class="profile-avatar">NB</div>
+                <div>
+                  <span class="status-pill active">Active</span>
+                  <h3>Nguyễn Văn Bình</h3>
+                  <p>Parent account · ID PAR-001284</p>
+                </div>
+              </div>
+
+              <dl class="profile-details">
+                <div>
+                  <dt>Student</dt>
+                  <dd>Nguyễn Minh An</dd>
+                </div>
+                <div>
+                  <dt>Class</dt>
+                  <dd>3A</dd>
+                </div>
+                <div>
+                  <dt>Student ID</dt>
+                  <dd>HS20260123</dd>
+                </div>
+                <div>
+                  <dt>Last access</dt>
+                  <dd>Today, 12:42</dd>
+                </div>
+              </dl>
+
+              <a class="text-action" href="#accounts">View full account <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="panel permission-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Assigned cameras</span>
+                  <h3>2 of 3 permitted</h3>
+                </div>
+                <span class="sync-label"><i class="fa-solid fa-rotate"></i> Synced</span>
+              </div>
+
+              <ul class="permission-list">
+                <li>
+                  <div class="camera-list-icon blue">
+                    <i class="fa-solid fa-video"></i>
+                  </div>
+                  <div class="camera-list-copy">
+                    <strong>Classroom 3A</strong>
+                    <small>CAM-3A-01 · Building A / Floor 2</small>
+                  </div>
+                  <span class="permission-badge allow"><i class="fa-solid fa-check"></i> Allowed</span>
+                </li>
+                <li>
+                  <div class="camera-list-icon green">
+                    <i class="fa-solid fa-tree"></i>
+                  </div>
+                  <div class="camera-list-copy">
+                    <strong>Playground</strong>
+                    <small>CAM-YARD-02 · Central yard</small>
+                  </div>
+                  <span class="permission-badge allow"><i class="fa-solid fa-check"></i> Allowed</span>
+                </li>
+                <li>
+                  <div class="camera-list-icon gray">
+                    <i class="fa-solid fa-video-slash"></i>
+                  </div>
+                  <div class="camera-list-copy">
+                    <strong>Classroom 3B</strong>
+                    <small>CAM-3B-03 · Building B / Floor 2</small>
+                  </div>
+                  <span class="permission-badge deny"><i class="fa-solid fa-lock"></i> No access</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section section-soft" id="cameras" data-aos="fade-up">
+          <div class="section-heading compact">
+            <div>
+              <span class="eyebrow">Cameras</span>
+              <h2>Camera inventory</h2>
+              <p>Operational view of classroom and campus cameras.</p>
+            </div>
+            <a class="secondary-action" href="#dashboard"><i class="fa-solid fa-arrow-up-right-from-square"></i> Full inventory</a>
+          </div>
+
+          <div class="camera-grid">
+            <article class="camera-card" tabindex="0" data-aos="zoom-in">
+              <div class="camera-preview preview-blue">
+                <span class="live-badge"><i class="fa-solid fa-circle"></i> LIVE</span>
+                <span class="camera-code">CAM-3A-01</span>
+                <i class="fa-solid fa-video camera-watermark" aria-hidden="true"></i>
+              </div>
+              <div class="camera-card-body">
+                <div>
+                  <h3>Classroom 3A</h3>
+                  <p>Building A · Floor 2</p>
+                </div>
+                <span class="status-pill online">Online</span>
+              </div>
+            </article>
+
+            <article class="camera-card" tabindex="0" data-aos="zoom-in" data-aos-delay="100">
+              <div class="camera-preview preview-green">
+                <span class="live-badge"><i class="fa-solid fa-circle"></i> LIVE</span>
+                <span class="camera-code">CAM-YARD-02</span>
+                <i class="fa-solid fa-video camera-watermark" aria-hidden="true"></i>
+              </div>
+              <div class="camera-card-body">
+                <div>
+                  <h3>Playground</h3>
+                  <p>Central yard</p>
+                </div>
+                <span class="status-pill online">Online</span>
+              </div>
+            </article>
+
+            <article class="camera-card" tabindex="0" data-aos="zoom-in" data-aos-delay="200">
+              <div class="camera-preview preview-dark">
+                <span class="offline-badge"><i class="fa-solid fa-circle-xmark"></i> OFFLINE</span>
+                <span class="camera-code">CAM-HALL-06</span>
+                <i class="fa-solid fa-video-slash camera-watermark" aria-hidden="true"></i>
+              </div>
+              <div class="camera-card-body">
+                <div>
+                  <h3>Hallway B</h3>
+                  <p>Building B · Floor 1</p>
+                </div>
+                <span class="status-pill offline">Offline</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="accounts" data-aos="fade-up">
+          <div class="section-heading compact">
+            <div>
+              <span class="eyebrow">Accounts</span>
+              <h2>Parent account directory</h2>
+              <p>Account status, linked student and current camera permissions.</p>
+            </div>
+            <div class="search-shell" role="search">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <input type="search" placeholder="Search accounts..." aria-label="Tìm tài khoản">
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Parent</th>
+                    <th>Student</th>
+                    <th>Class</th>
+                    <th>Camera access</th>
+                    <th>Status</th>
+                    <th aria-label="Actions"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="table-person"><span>NB</span><strong>Nguyễn Văn Bình</strong></div>
+                    </td>
+                    <td>Nguyễn Minh An</td>
+                    <td>3A</td>
+                    <td><strong>2 cameras</strong></td>
+                    <td><span class="status-pill active">Active</span></td>
+                    <td><button class="row-action" type="button" aria-label="Mở tác vụ cho Nguyễn Văn Bình"><i class="fa-solid fa-ellipsis"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="table-person"><span>TH</span><strong>Trần Thị Hoa</strong></div>
+                    </td>
+                    <td>Trần Gia Bảo</td>
+                    <td>3A</td>
+                    <td><strong>2 cameras</strong></td>
+                    <td><span class="status-pill active">Active</span></td>
+                    <td><button class="row-action" type="button" aria-label="Mở tác vụ cho Trần Thị Hoa"><i class="fa-solid fa-ellipsis"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="table-person"><span>LN</span><strong>Lê Hoàng Nam</strong></div>
+                    </td>
+                    <td>Lê Minh Khôi</td>
+                    <td>4B</td>
+                    <td><strong>0 cameras</strong></td>
+                    <td><span class="status-pill review">Review</span></td>
+                    <td><button class="row-action" type="button" aria-label="Mở tác vụ cho Lê Hoàng Nam"><i class="fa-solid fa-ellipsis"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="table-person"><span>PN</span><strong>Phạm Thu Ngân</strong></div>
+                    </td>
+                    <td>Phạm Anh Khoa</td>
+                    <td>5C</td>
+                    <td><strong>1 camera</strong></td>
+                    <td><span class="status-pill active">Active</span></td>
+                    <td><button class="row-action" type="button" aria-label="Mở tác vụ cho Phạm Thu Ngân"><i class="fa-solid fa-ellipsis"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-footer">
+              <span>Showing 4 of 1,284 accounts</span>
+              <div class="pagination" aria-label="Phân trang">
+                <button type="button" aria-label="Trang trước"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="current" type="button">1</button>
+                <button type="button">2</button>
+                <button type="button">3</button>
+                <button type="button" aria-label="Trang sau"><i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-soft" id="activity" data-aos="fade-up">
+          <div class="section-heading compact">
+            <div>
+              <span class="eyebrow">Activity</span>
+              <h2>Recent permission events</h2>
+              <p>Operational log for access changes and camera status.</p>
+            </div>
+          </div>
+
+          <div class="timeline-card">
+            <article class="timeline-item">
+              <span class="timeline-icon success"><i class="fa-solid fa-user-check"></i></span>
+              <div>
+                <h3>Camera access granted</h3>
+                <p>Nguyễn Văn Bình received access to Classroom 3A.</p>
+              </div>
+              <time>Today · 12:42</time>
+            </article>
+
+            <article class="timeline-item">
+              <span class="timeline-icon danger"><i class="fa-solid fa-user-lock"></i></span>
+              <div>
+                <h3>Access revoked</h3>
+                <p>Lê Hoàng Nam no longer has permission to Classroom 4B.</p>
+              </div>
+              <time>Today · 11:08</time>
+            </article>
+
+            <article class="timeline-item">
+              <span class="timeline-icon info"><i class="fa-solid fa-video"></i></span>
+              <div>
+                <h3>Camera returned online</h3>
+                <p>Playground camera CAM-YARD-02 recovered successfully.</p>
+              </div>
+              <time>Today · 09:31</time>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>School Camera Access</strong>
+          <span>·</span>
+          <a href="#dashboard">System status</a>
+          <a href="#access">Access policy</a>
+        </div>
+        <span>© 2026 School Camera Access</span>
+      </footer>
     </div>
-  </header>
+  </div>
 
-  <main class="container page-shell">
-    <!-- PAGE CONTENT START -->
-    <section id="login-root" aria-labelledby="page-title">
-      <h1 id="page-title">Login</h1>
-      <!-- TODO: QMinh triển khai nội dung Login theo docs/UI_CONTRACT.md. -->
-      <p class="muted">TODO — QMinh: xây dựng giao diện đăng nhập.</p>
-    </section>
-    <!-- PAGE CONTENT END -->
-  </main>
-
-  <!-- SHARED SHELL: DO NOT EDIT WITHOUT ARCHITECT APPROVAL -->
-  <footer class="site-footer">
-    <div class="container">School Camera Access — FE Prototype</div>
-  </footer>
-  <script type="module" src="assets/js/pages/login.js"></script>
+  <!-- AOS requires initialization. No business JavaScript is used. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 720,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 35
+    });
+  </script>
 </body>
 </html>
