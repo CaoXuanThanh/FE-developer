@@ -6,12 +6,12 @@
 }
 
 /* =========================================
-   1. FLEXBOX: Căn giữa đối tượng
+   1. FLEXBOX: Căn giữa đối tượngád
    ========================================= */
 .flex-wrapper {á
-    /* Đảm bảo vùng chứa có chiều cao toàn màn hình để có thể căn giữa theo chiều dọc */
+    /* Đảm bảo vùng chứa có chiều cao toàn màn hình để cádó thể căn giữa theo chiaều dọc */
     height: 100vh; 
-    
+    asd
     /* Thiết lập Flexbox */
     display: flex;
     justify-content: center; /* Căn giữa theo chiều ngang */
