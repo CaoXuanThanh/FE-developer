@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4 - Kiểm tra mật khẩu</title>
+</head>
+<body>
+    <input type="password" id="pwdInput" placeholder="Nhập mật khẩu">
+    <span id="pwdMsg"></span>
+    <script>
+        const pwdInput = document.getElementById('pwdInput');
+        const pwdMsg = document.getElementById('pwdMsg');
+
+        pwdInput.addEventListener('input', function() {
+            const length = this.value.length;
+            if (length === 0) {
+                pwdMsg.innerText = '';
+            } else if (length < 8) {
+                pwdMsg.innerText = "Mật khẩu quá ngắn";
+                pwdMsg.style.color = "red";
+            } else {
+                pwdMsg.innerText = "Mật khẩu hợp lệ";
+                pwdMsg.style.color = "green";
+            }
+        });
+    </script>
+</body>
+</html>

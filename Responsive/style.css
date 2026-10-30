@@ -1,0 +1,357 @@
+/* =========================================================
+   HĐ 1 + HĐ 4
+   DESIGN SYSTEM: COLORS + SPACING
+   ========================================================= */
+
+:root {
+    /* Colors */
+    --primary: #2563eb;
+    --secondary: #7c3aed;
+
+    --heavy-gray: #374151;
+    --medium-gray: #9ca3af;
+    --light-gray: #e5e7eb;
+
+    --background: #f9fafb;
+    --surface: #ffffff;
+
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+
+    /* Một ít token phụ */
+    --radius-md: 8px;
+}
+
+
+/* =========================================================
+   RESET CƠ BẢN
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: var(--space-lg);
+
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+
+    color: var(--heavy-gray);
+    background-color: var(--background);
+
+
+    /* =====================================================
+       HĐ 2
+       DESKTOP: MAIN + ASIDE = 2 CỘT
+       ===================================================== */
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: var(--space-lg);
+}
+
+
+/* =========================================================
+   HEADER + FOOTER CHIẾM TOÀN BỘ HÀNG
+   ========================================================= */
+
+body > header,
+body > footer {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+body > header {
+    padding: var(--space-lg);
+
+    background-color: var(--primary);
+    color: var(--surface);
+
+    border-radius: var(--radius-md);
+}
+
+header p {
+    margin: var(--space-sm) 0;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+nav ul {
+    display: flex;
+    gap: var(--space-md);
+
+    margin: var(--space-md) 0 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+nav a {
+    color: var(--surface);
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+main {
+    min-width: 0;
+}
+
+section {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+
+    background-color: var(--surface);
+
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius-md);
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+    color: var(--heavy-gray);
+}
+
+h1,
+h2 {
+    margin-top: 0;
+}
+
+p {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+
+/* =========================================================
+   IMAGE RESPONSIVE
+   ========================================================= */
+
+figure {
+    margin: var(--space-lg) 0;
+}
+
+img {
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+
+    border-radius: var(--radius-md);
+}
+
+figcaption {
+    margin-top: var(--space-sm);
+
+    color: var(--medium-gray);
+}
+
+
+/* =========================================================
+   PROJECT ARTICLES
+   ========================================================= */
+
+article {
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+
+    background-color: var(--background);
+
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius-md);
+}
+
+article:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   ASIDE
+   ========================================================= */
+
+aside {
+    padding: var(--space-lg);
+
+    background-color: var(--surface);
+
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius-md);
+
+    align-self: start;
+}
+
+blockquote {
+    margin: var(--space-md) 0;
+    padding: var(--space-md);
+
+    background-color: var(--background);
+
+    border-left: 4px solid var(--secondary);
+}
+
+
+/*
+    HTML của m có footer bên trong blockquote.
+
+    Không để footer này bị nhầm với footer chính của trang.
+*/
+
+blockquote footer {
+    margin-top: var(--space-sm);
+
+    color: var(--medium-gray);
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+main a,
+aside a {
+    color: var(--primary);
+}
+
+main a:hover,
+aside a:hover {
+    color: var(--secondary);
+}
+
+
+/* =========================================================
+   FOOTER CHÍNH
+   ========================================================= */
+
+body > footer {
+    padding: var(--space-lg);
+
+    text-align: center;
+
+    background-color: var(--heavy-gray);
+    color: var(--surface);
+
+    border-radius: var(--radius-md);
+}
+
+
+/* =========================================================
+   HĐ 3
+   SERVICES GRID
+
+   Desktop: 4 cột
+   ========================================================= */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: var(--space-lg);
+}
+
+.services-grid article {
+    margin: 0;
+}
+
+
+/* =========================================================
+   TABLET
+   768px -> 1023px
+
+   Services: 4 cột -> 2 cột
+   ========================================================= */
+
+@media (max-width: 1023px) {
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   HĐ 2 + HĐ 3
+   MOBILE < 768px
+
+   Portfolio:
+   2 cột -> 1 cột
+
+   Services:
+   2 cột -> 1 cột
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    body {
+        grid-template-columns: 1fr;
+
+        padding: var(--space-md);
+        gap: var(--space-md);
+    }
+
+
+    /* Header/footer vẫn chiếm toàn bộ grid */
+
+    body > header,
+    body > footer {
+        grid-column: 1 / -1;
+    }
+
+
+    /* Navigation chuyển dọc */
+
+    nav ul {
+        flex-direction: column;
+
+        gap: var(--space-sm);
+    }
+
+
+    /* Services thành 1 cột */
+
+    .services-grid {
+        grid-template-columns: 1fr;
+
+        gap: var(--space-md);
+    }
+
+
+    /* Giảm spacing cho màn hình nhỏ */
+
+    section,
+    aside,
+    body > header,
+    body > footer {
+        padding: var(--space-md);
+    }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1 - Lời chào</title>
+</head>
+<body>
+    <input type="text" id="nameInput" placeholder="Nhập tên của bạn">
+    <button id="greetBtn">Chào</button>
+    <h3 id="greetingMsg"></h3>
+    <script>
+        const nameInput = document.getElementById('nameInput');
+        const greetBtn = document.getElementById('greetBtn');
+        const greetingMsg = document.getElementById('greetingMsg');
+
+        greetBtn.addEventListener('click', function() {
+            const name = nameInput.value;
+            if (name) {
+                greetingMsg.innerText = `Chào mừng ${name}!`;
+            } else {
+                greetingMsg.innerText = "Vui lòng nhập tên!";
+            }
+        });
+    </script>
+</body>
+</html>

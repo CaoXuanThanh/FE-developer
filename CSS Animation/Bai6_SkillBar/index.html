@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 6 · Skill bars</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f9fc; color: #17354c; font-family: Arial, sans-serif; line-height: 1.7; }
+    a { color: #075c82; text-underline-offset: 4px; }
+    a:focus-visible { outline: 3px solid #0e948b; outline-offset: 6px; }
+    .shell { width: min(100% - 48px, 960px); margin: auto; }
+    nav { display: flex; justify-content: space-between; gap: 20px; padding-top: 24px; }
+    nav span { color: #486175; }
+    main { min-height: calc(100vh - 115px); display: grid; align-content: center; padding: 70px 0; }
+    .eyebrow { margin: 0 0 16px; color: #08756f; font-size: .8rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    h1 { margin: 0 0 20px; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; letter-spacing: -.04em; }
+    .intro { max-width: 620px; margin: 0 0 40px; color: #486175; font-size: 1.1rem; }
+    .skill-panel { padding: clamp(24px, 5vw, 48px); border: 1px solid #dae5ec; border-radius: 24px; background: white; box-shadow: 0 16px 48px rgba(31, 78, 105, .06); }
+    .skill + .skill { margin-top: 30px; }
+    .skill-label { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 12px; font-weight: 700; }
+    .skill-label span:last-child { color: #075c82; }
+    .track { height: 16px; overflow: hidden; border-radius: 999px; background: #e7eff4; }
+    .fill { width: 0%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #176fb5, #0b8e85); animation: fill-skill 1.6s ease-in-out forwards; }
+    @keyframes fill-skill { from { width: 0%; } to { width: var(--target); } }
+    .note { margin: 24px 0 0; color: #486175; font-size: .9rem; }
+    footer { padding: 12px 0 32px; color: #486175; font-size: .9rem; }
+    @media (max-width: 480px) { nav { flex-direction: column; gap: 6px; } }
+    @media (prefers-reduced-motion: reduce) { .fill { width: var(--target); animation: none; } }
+  </style>
+</head>
+<body>
+  <nav class="shell" aria-label="Điều hướng bài tập">
+    <a href="../hoatdong2.html">← Portfolio</a>
+    <span>Tuần 5 / Bài 06</span>
+  </nav>
+  <main class="shell">
+    <p class="eyebrow">Từng bước tiến bộ</p>
+    <h1>Kỹ năng của tôi.</h1>
+    <p class="intro">Ba thanh kỹ năng đi từ 0 đến mức đích trong 1,6 giây và giữ nguyên trạng thái khi chuyển động kết thúc.</p>
+    <section class="skill-panel" aria-label="Mức độ kỹ năng lập trình">
+      <div class="skill">
+        <div class="skill-label"><span id="html-label">HTML</span><span aria-hidden="true">90%</span></div>
+        <div class="track" role="progressbar" aria-labelledby="html-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90">
+          <div class="fill" style="--target: 90%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <div class="skill-label"><span id="css-label">CSS</span><span aria-hidden="true">85%</span></div>
+        <div class="track" role="progressbar" aria-labelledby="css-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85">
+          <div class="fill" style="--target: 85%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <div class="skill-label"><span id="js-label">JS</span><span aria-hidden="true">70%</span></div>
+        <div class="track" role="progressbar" aria-labelledby="js-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+          <div class="fill" style="--target: 70%"></div>
+        </div>
+      </div>
+      <p class="note">Tải lại trang để xem lại hiệu ứng. Khi bật giảm chuyển động, các thanh hiển thị ngay giá trị hoàn chỉnh.</p>
+    </section>
+  </main>
+  <footer class="shell">CSS Animation · @keyframes + forwards · Không dùng JavaScript</footer>
+</body>
+</html>

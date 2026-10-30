@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2 - Bộ sưu tập ảnh</title>
+</head>
+<body>
+    <div class="gallery">
+        <img id="mainImg" src="https://via.placeholder.com/400x300?text=Anh+1" alt="Ảnh lớn" width="400">
+        <div class="thumbnails" style="margin-top: 10px;">
+            <img class="thumb" src="https://via.placeholder.com/400x300?text=Anh+1" alt="Thumb 1" width="100" style="cursor: pointer;">
+            <img class="thumb" src="https://via.placeholder.com/400x300?text=Anh+2" alt="Thumb 2" width="100" style="cursor: pointer;">
+            <img class="thumb" src="https://via.placeholder.com/400x300?text=Anh+3" alt="Thumb 3" width="100" style="cursor: pointer;">
+        </div>
+    </div>
+    <script>
+        const mainImg = document.getElementById('mainImg');
+        const thumbs = document.querySelectorAll('.thumb');
+
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                mainImg.src = this.src;
+            });
+        });
+    </script>
+</body>
+</html>
